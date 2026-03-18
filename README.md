@@ -99,8 +99,8 @@ button:hover { background: #2e7d32; }
 }
 
 #cartBox img {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
 }
 
 #cartBox span {
