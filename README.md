@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -11,12 +11,12 @@ body { font-family: Arial; margin: 0; background: #f4f4f4; }
 header {
   background: #2e7d32;
   color: white;
-  padding: 20px;
+  padding: 100px;
   text-align: center;
 }
 
 .container {
-  padding: 20px;
+  padding: 100px;
   max-width: 1200px;
   margin: auto;
 }
@@ -29,8 +29,8 @@ header {
 
 .card {
   background: white;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 30px;
+  border-radius: 30px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   text-align: center;
   transition: transform 0.2s;
