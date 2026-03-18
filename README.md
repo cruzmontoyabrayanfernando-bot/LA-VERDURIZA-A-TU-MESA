@@ -7,8 +7,30 @@
 
 <style>
 body { font-family: Arial; margin: 0; background: #f4f4f4; }
-header { background: #2e7d32; color: white; padding: 20px; text-align: center; }
-.container { padding: 40px; }
+
+header {
+  background: #2e7d32;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* RESPONSIVE PADDING */
+.container {
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+}
 
 .grid {
   display: grid;
@@ -24,7 +46,6 @@ header { background: #2e7d32; color: white; padding: 20px; text-align: center; }
   text-align: center;
 }
 
-/* NUEVO */
 .product-img {
   width: 100%;
   height: 120px;
@@ -117,7 +138,6 @@ button:hover { background: #2e7d32; }
 🛒 Ver carrito ($<span id="total">0</span>)
 </div>
 
-<!-- MODAL -->
 <div id="modal">
 <div class="modal-content">
 
@@ -161,7 +181,7 @@ button:hover { background: #2e7d32; }
 const products = [
   { name: "Guineo", price: 20, img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
   { name: "Plátano", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
-  { name: "Naranja", price: 27, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp?h=e5bbb8f9&itok=0rigDt3S" },
+  { name: "Naranja", price: 27, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" },
   { name: "Tomate", price: 42, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
   { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
   { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" }
@@ -257,7 +277,7 @@ function sendWhatsApp() {
   const address = document.getElementById("address").value.trim();
   const references = document.getElementById("references").value.trim();
   const payment = document.getElementById("payment").value;
-  const cash = document.getElementById("cash").value;
+  const cash = parseFloat(document.getElementById("cash").value) || 0;
   const extra = document.getElementById("extra").value.trim();
 
   if (!name || !address) {
@@ -270,8 +290,15 @@ function sendWhatsApp() {
   message += `👤 ${name}%0A📍 ${address}%0A📝 ${references}%0A`;
   message += `💳 Pago: ${payment}%0A`;
 
-  if (payment === "Efectivo" && cash) {
+  if (payment === "Efectivo") {
     message += `💵 Paga con: $${cash}%0A`;
+
+    if (cash >= total) {
+      const cambio = cash - total;
+      message += `🔄 Cambio: $${cambio}%0A`;
+    } else {
+      message += `⚠️ Falta: $${(total - cash)}%0A`;
+    }
   }
 
   message += "%0A🧺 *Productos:* %0A";
