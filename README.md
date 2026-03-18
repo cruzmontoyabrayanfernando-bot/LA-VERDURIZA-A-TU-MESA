@@ -15,58 +15,45 @@ header {
   text-align: center;
 }
 
+/* CONTENEDOR RESPONSIVE */
 .container {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
 }
 
+/* GRID RESPONSIVE */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 12px;
 }
 
+/* TARJETAS */
 .card {
   background: white;
   padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   text-align: center;
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: scale(1.03);
 }
 
 .product-img {
   width: 100%;
-  height: 110px;
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-/* CONTROLES + - */
-.qty-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.qty-controls button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  font-size: 18px;
-  padding: 0;
-}
-
-.qty-number {
-  font-size: 18px;
-  font-weight: bold;
+/* INPUTS */
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
 
 /* BOTONES */
@@ -75,17 +62,20 @@ button {
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-top: 5px;
+  width: 100%;
 }
 
 button:hover { background: #2e7d32; }
 
 .remove-btn {
   background: red;
+  width: auto;
 }
 
-/* CARRITO */
+/* CARRITO PRO */
 #cartBox {
   position: fixed;
   bottom: 15px;
@@ -93,18 +83,33 @@ button:hover { background: #2e7d32; }
   background: #ff9800;
   padding: 12px 15px;
   border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 999;
+  transition: transform 0.2s;
+}
+
+#cartBox:hover {
+  transform: scale(1.05);
 }
 
 #cartBox img {
   width: 30px;
+  height: 30px;
+}
+
+#cartBox span {
+  font-size: 14px;
+}
+
+#cartBox p {
+  margin: 0;
+  font-size: 16px;
 }
 
 /* MODAL */
@@ -134,23 +139,39 @@ button:hover { background: #2e7d32; }
   float: right;
   cursor: pointer;
   color: red;
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-
-  #cartBox {
-    width: calc(100% - 20px);
-    left: 10px;
-    right: 10px;
-    justify-content: center;
-  }
+  font-weight: bold;
 }
 
 #changeText {
   font-weight: bold;
   margin-top: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+
+  header h1 { font-size: 22px; }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-img {
+    height: 90px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  #cartBox {
+    width: calc(100% - 20px);
+    right: 10px;
+    left: 10px;
+    justify-content: center;
+  }
+
 }
 </style>
 </head>
@@ -167,11 +188,16 @@ button:hover { background: #2e7d32; }
 <div class="grid" id="products"></div>
 </div>
 
+<!-- CARRITO MEJORADO -->
 <div id="cartBox" onclick="openModal()">
-<img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
-<span>$<span id="total">0</span></span>
+  <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+  <div>
+    <span>Carrito</span>
+    <p>$<span id="total">0</span></p>
+  </div>
 </div>
 
+<!-- MODAL -->
 <div id="modal">
 <div class="modal-content">
 
@@ -182,19 +208,32 @@ button:hover { background: #2e7d32; }
 
 <hr>
 
-<input type="text" id="name" placeholder="Nombre">
-<input type="text" id="address" placeholder="Dirección">
-<textarea id="references" placeholder="Referencias"></textarea>
+<h3>Datos de entrega</h3>
 
+<label>Nombre:</label>
+<input type="text" id="name">
+
+<label>Dirección:</label>
+<input type="text" id="address">
+
+<label>Referencias:</label>
+<textarea id="references"></textarea>
+
+<label>Método de pago:</label>
 <select id="payment">
-<option>Efectivo</option>
-<option>Transferencia</option>
+  <option value="Efectivo">Efectivo</option>
+  <option value="Transferencia">Transferencia</option>
 </select>
 
-<input type="number" id="cash" placeholder="¿Con cuánto paga?" oninput="calculateChange()">
+<label>¿Con cuánto paga?</label>
+<input type="number" id="cash" oninput="calculateChange()">
+
 <p id="changeText"></p>
 
-<button onclick="sendWhatsApp()">Enviar pedido</button>
+<label>¿No encontraste lo que buscas?</label>
+<textarea id="extra"></textarea>
+
+<button onclick="sendWhatsApp()">Confirmar pedido</button>
 
 </div>
 </div>
@@ -204,7 +243,10 @@ button:hover { background: #2e7d32; }
 const products = [
   { name: "Guineo", price: 20, img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
   { name: "Plátano", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
-  { name: "Naranja", price: 27, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" }
+  { name: "Naranja", price: 27, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" },
+  { name: "Tomate", price: 42, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
+  { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
+  { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" }
 ];
 
 let cart = [];
@@ -219,36 +261,28 @@ products.forEach((p, i) => {
   div.innerHTML = `
     <img src="${p.img}" class="product-img">
     <h3>${p.name}</h3>
-    <p>$${p.price}</p>
-
-    <div class="qty-controls">
-      <button onclick="changeQty(${i}, -1)">➖</button>
-      <span id="qty${i}" class="qty-number">1</span>
-      <button onclick="changeQty(${i}, 1)">➕</button>
-    </div>
-
+    <p>$${p.price} / kg</p>
+    <input type="number" id="qty${i}" min="1" value="1"> kg
     <button onclick="addToCart(${i})">Agregar</button>
   `;
 
   container.appendChild(div);
 });
 
-function changeQty(i, change) {
-  const el = document.getElementById(`qty${i}`);
-  let value = parseInt(el.innerText);
-  value += change;
-  if (value < 1) value = 1;
-  el.innerText = value;
-}
-
 function addToCart(i) {
-  const qty = parseInt(document.getElementById(`qty${i}`).innerText);
+  const qty = document.getElementById(`qty${i}`).value;
+  if (qty <= 0) return;
+
   const product = products[i];
   const subtotal = product.price * qty;
 
-  cart.push({ name: product.name, qty, subtotal });
-  total += subtotal;
+  cart.push({
+    name: product.name,
+    qty: qty,
+    subtotal: subtotal
+  });
 
+  total += subtotal;
   updateTotal();
 }
 
@@ -256,29 +290,41 @@ function updateTotal() {
   document.getElementById("total").innerText = total;
 }
 
+function removeFromCart(index) {
+  total -= cart[index].subtotal;
+  cart.splice(index, 1);
+  renderCart();
+  updateTotal();
+  calculateChange();
+}
+
 function renderCart() {
   const list = document.getElementById("cartList");
   list.innerHTML = "";
 
+  if (cart.length === 0) {
+    list.innerHTML = "<p>Carrito vacío</p>";
+    return;
+  }
+
   cart.forEach((item, i) => {
     list.innerHTML += `
       <div>
-        ${item.name} x${item.qty} = $${item.subtotal}
+        ${item.name} - ${item.qty} kg = $${item.subtotal}
         <button class="remove-btn" onclick="removeFromCart(${i})">X</button>
       </div>
     `;
   });
 }
 
-function removeFromCart(i) {
-  total -= cart[i].subtotal;
-  cart.splice(i, 1);
-  renderCart();
-  updateTotal();
-}
-
 function openModal() {
   renderCart();
+
+  if (cart.length === 0) {
+    alert("El carrito está vacío");
+    return;
+  }
+
   document.getElementById("modal").style.display = "flex";
 }
 
@@ -288,24 +334,70 @@ function closeModal() {
 
 function calculateChange() {
   const cash = parseFloat(document.getElementById("cash").value) || 0;
+  const changeText = document.getElementById("changeText");
+
+  if (cash === 0) {
+    changeText.innerText = "";
+    return;
+  }
 
   if (cash >= total) {
-    document.getElementById("changeText").innerText = "Cambio: $" + (cash - total);
+    const cambio = cash - total;
+    changeText.innerText = `Cambio: $${cambio}`;
+    changeText.style.color = "green";
   } else {
-    document.getElementById("changeText").innerText = "Faltan: $" + (total - cash);
+    const falta = total - cash;
+    changeText.innerText = `Faltan: $${falta}`;
+    changeText.style.color = "red";
   }
 }
 
 function sendWhatsApp() {
-  let message = "Pedido:%0A";
 
-  cart.forEach(p => {
-    message += `${p.name} x${p.qty} = $${p.subtotal}%0A`;
+  const name = document.getElementById("name").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const references = document.getElementById("references").value.trim();
+  const payment = document.getElementById("payment").value;
+  const cash = parseFloat(document.getElementById("cash").value) || 0;
+  const extra = document.getElementById("extra").value.trim();
+
+  if (!name || !address) {
+    alert("Completa nombre y dirección");
+    return;
+  }
+
+  let message = "🛒 *Pedido - La Verduriza* %0A%0A";
+
+  message += `👤 ${name}%0A📍 ${address}%0A📝 ${references}%0A`;
+  message += `💳 Pago: ${payment}%0A`;
+
+  if (payment === "Efectivo") {
+    message += `💵 Paga con: $${cash}%0A`;
+
+    if (cash >= total) {
+      const cambio = cash - total;
+      message += `🔄 Cambio: $${cambio}%0A`;
+    } else {
+      message += `⚠️ Falta: $${(total - cash)}%0A`;
+    }
+  }
+
+  message += "%0A🧺 *Productos:* %0A";
+
+  cart.forEach(item => {
+    message += `• ${item.name} - ${item.qty} kg = $${item.subtotal}%0A`;
   });
 
-  message += `Total: $${total}`;
+  if (extra) {
+    message += `%0A❓ También busco:%0A${extra}%0A`;
+  }
 
-  window.open(`https://wa.me/5219613267670?text=${message}`);
+  message += `%0ATotal: $${total}`;
+
+  const phone = "5219613267670";
+  const url = `https://wa.me/${phone}?text=${message}`;
+
+  window.open(url, "_blank");
 }
 
 </script>
