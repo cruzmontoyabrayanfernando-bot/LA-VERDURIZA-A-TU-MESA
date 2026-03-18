@@ -11,7 +11,7 @@ body { font-family: Arial; margin: 0; background: #f4f4f4; }
 header {
   background: #2e7d32;
   color: white;
-  padding: 100px;
+  padding: 1000px;
   text-align: center;
 }
 
@@ -137,7 +137,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 1000px) {
+@media (max-width: 500px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 
   #cartBox {
