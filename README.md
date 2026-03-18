@@ -11,10 +11,8 @@ body { font-family: Arial; margin: 0; background: #f4f4f4; }
 header {
   background: #0366d6;
   color: white;
-  padding: 10px;
+  padding: 990px;
   text-align: center;
-    margin: auto;
- max-width: 1200px;
 }
 
 .container {
@@ -81,7 +79,7 @@ button {
   cursor: pointer;
 }
 
-button:hover { background: #2e7d32; }
+button:hover { background: #0366d6; }
 
 .remove-btn {
   background: red;
@@ -106,7 +104,7 @@ button:hover { background: #2e7d32; }
 }
 
 #cartBox img {
-  width: 30px;
+  width: 60px;
 }
 
 /* MODAL */
@@ -124,12 +122,13 @@ button:hover { background: #2e7d32; }
 
 .modal-content {
   background: white;
-  padding: 20px;
+  padding: 0px;
   border-radius: 10px;
   width: 95%;
   max-width: 420px;
   max-height: 90vh;
   overflow-y: auto;
+ margin: auto;
 }
 
 .close {
