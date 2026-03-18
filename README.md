@@ -16,25 +16,20 @@ header {
 }
 
 /* RESPONSIVE PADDING */
-.container {
-  padding: 40px;
-}
+.container { padding: 40px; }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 20px;
-  }
+  .container { padding: 20px; }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
+  .container { padding: 10px; }
 }
 
+/* GRID RESPONSIVE */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
 }
 
@@ -56,26 +51,29 @@ header {
 
 input, textarea, select {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 16px;
 }
 
 button {
   background: #43a047;
   color: white;
   border: none;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 5px;
+  width: 100%;
 }
 
 button:hover { background: #2e7d32; }
 
 .remove-btn {
   background: red;
+  width: auto;
 }
 
 #cartBox {
@@ -118,6 +116,29 @@ button:hover { background: #2e7d32; }
   cursor: pointer;
   color: red;
   font-weight: bold;
+}
+
+/* MOBILE EXTRA */
+@media (max-width: 480px) {
+  header h1 { font-size: 22px; }
+  .card { padding: 10px; }
+  .product-img { height: 100px; }
+
+  #cartBox {
+    right: 10px;
+    bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .modal-content {
+    padding: 15px;
+  }
+}
+
+#changeText {
+  font-weight: bold;
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -166,7 +187,9 @@ button:hover { background: #2e7d32; }
 </select>
 
 <label>¿Con cuánto paga?</label>
-<input type="number" id="cash">
+<input type="number" id="cash" oninput="calculateChange()">
+
+<p id="changeText"></p>
 
 <label>¿No encontraste lo que buscas?</label>
 <textarea id="extra" placeholder="Escribe aquí lo que necesitas..."></textarea>
@@ -222,8 +245,6 @@ function addToCart(i) {
 
   total += subtotal;
   updateTotal();
-
-  alert(`${product.name} agregado`);
 }
 
 function updateTotal() {
@@ -235,6 +256,7 @@ function removeFromCart(index) {
   cart.splice(index, 1);
   renderCart();
   updateTotal();
+  calculateChange();
 }
 
 function renderCart() {
@@ -269,6 +291,26 @@ function openModal() {
 
 function closeModal() {
   document.getElementById("modal").style.display = "none";
+}
+
+function calculateChange() {
+  const cash = parseFloat(document.getElementById("cash").value) || 0;
+  const changeText = document.getElementById("changeText");
+
+  if (cash === 0) {
+    changeText.innerText = "";
+    return;
+  }
+
+  if (cash >= total) {
+    const cambio = cash - total;
+    changeText.innerText = `Cambio: $${cambio}`;
+    changeText.style.color = "green";
+  } else {
+    const falta = total - cash;
+    changeText.innerText = `Faltan: $${falta}`;
+    changeText.style.color = "red";
+  }
 }
 
 function sendWhatsApp() {
