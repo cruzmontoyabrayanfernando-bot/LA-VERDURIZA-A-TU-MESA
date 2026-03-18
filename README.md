@@ -11,10 +11,9 @@ body { font-family: Arial; margin: 0; background: #f4f4f4; }
 header {
   background: #2e7d32;
   color: white;
-  padding: 1000px;
-  max-width: 1200px;
+  padding: 999px;
   text-align: center;
-    margin: auto;
+
 }
 
 .container {
@@ -31,7 +30,7 @@ header {
 
 .card {
   background: white;
-  padding: 30px;
+  padding: 600px;
   border-radius: 30px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   text-align: center;
