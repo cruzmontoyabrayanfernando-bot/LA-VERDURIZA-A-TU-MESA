@@ -38,18 +38,6 @@ header {
   opacity: 0.9;
 }
 
-.whatsapp-btn {
-  background: #25D366;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  text-decoration: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
 /* CONTENEDOR */
 .container {
   padding: 20px;
@@ -218,10 +206,6 @@ button:hover { background: #2e7d32; }
       <h1>🥬 La Verduriza</h1>
       <p>Frutas y verduras frescas hasta tu puerta</p>
     </div>
-
-    <a class="whatsapp-btn" href="https://wa.me/5219613267670" target="_blank">
-      📲 Pedir por WhatsApp
-    </a>
 
   </div>
 </header>
