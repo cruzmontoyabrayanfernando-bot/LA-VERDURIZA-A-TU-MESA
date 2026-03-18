@@ -15,27 +15,24 @@ header {
   text-align: center;
 }
 
-/* RESPONSIVE PADDING */
-.container { padding: 40px; }
-
-@media (max-width: 768px) {
-  .container { padding: 20px; }
-}
-
-@media (max-width: 480px) {
-  .container { padding: 10px; }
+/* CONTENEDOR RESPONSIVE */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* GRID RESPONSIVE */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
 }
 
+/* TARJETAS */
 .card {
   background: white;
-  padding: 15px;
+  padding: 12px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   text-align: center;
@@ -49,6 +46,7 @@ header {
   margin-bottom: 10px;
 }
 
+/* INPUTS */
 input, textarea, select {
   width: 100%;
   padding: 10px;
@@ -58,6 +56,7 @@ input, textarea, select {
   font-size: 16px;
 }
 
+/* BOTONES */
 button {
   background: #43a047;
   color: white;
@@ -76,16 +75,41 @@ button:hover { background: #2e7d32; }
   width: auto;
 }
 
+/* CARRITO PRO */
 #cartBox {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 15px;
+  right: 15px;
   background: #ff9800;
-  padding: 15px;
-  border-radius: 15px;
+  padding: 12px 15px;
+  border-radius: 50px;
   cursor: pointer;
   color: white;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: transform 0.2s;
+}
+
+#cartBox:hover {
+  transform: scale(1.05);
+}
+
+#cartBox img {
+  width: 30px;
+  height: 30px;
+}
+
+#cartBox span {
+  font-size: 14px;
+}
+
+#cartBox p {
+  margin: 0;
+  font-size: 16px;
 }
 
 /* MODAL */
@@ -118,27 +142,36 @@ button:hover { background: #2e7d32; }
   font-weight: bold;
 }
 
-/* MOBILE EXTRA */
-@media (max-width: 480px) {
-  header h1 { font-size: 22px; }
-  .card { padding: 10px; }
-  .product-img { height: 100px; }
-
-  #cartBox {
-    right: 10px;
-    bottom: 10px;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .modal-content {
-    padding: 15px;
-  }
-}
-
 #changeText {
   font-weight: bold;
   margin-top: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+
+  header h1 { font-size: 22px; }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-img {
+    height: 90px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  #cartBox {
+    width: calc(100% - 20px);
+    right: 10px;
+    left: 10px;
+    justify-content: center;
+  }
+
 }
 </style>
 </head>
@@ -155,10 +188,16 @@ button:hover { background: #2e7d32; }
 <div class="grid" id="products"></div>
 </div>
 
+<!-- CARRITO MEJORADO -->
 <div id="cartBox" onclick="openModal()">
-🛒 Ver carrito ($<span id="total">0</span>)
+  <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+  <div>
+    <span>Carrito</span>
+    <p>$<span id="total">0</span></p>
+  </div>
 </div>
 
+<!-- MODAL -->
 <div id="modal">
 <div class="modal-content">
 
@@ -192,7 +231,7 @@ button:hover { background: #2e7d32; }
 <p id="changeText"></p>
 
 <label>¿No encontraste lo que buscas?</label>
-<textarea id="extra" placeholder="Escribe aquí lo que necesitas..."></textarea>
+<textarea id="extra"></textarea>
 
 <button onclick="sendWhatsApp()">Confirmar pedido</button>
 
