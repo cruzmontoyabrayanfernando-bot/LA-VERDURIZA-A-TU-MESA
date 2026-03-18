@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -13,6 +13,7 @@ header {
   color: white;
   padding: 20px;
   text-align: center;
+  left: 100%;
 }
 
 /* CONTENEDOR RESPONSIVE */
