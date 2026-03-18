@@ -138,7 +138,7 @@ button:hover { background: #2e7d32; }
 
 #changeText {
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 </style>
 </head>
@@ -151,7 +151,7 @@ button:hover { background: #2e7d32; }
 </header>
 
 <div class="container">
-<h2>Productos</h2>
+<h1>Productos</h1>
 <div class="grid" id="products"></div>
 </div>
 
