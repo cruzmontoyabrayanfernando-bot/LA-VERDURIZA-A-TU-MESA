@@ -9,11 +9,12 @@
 body { font-family: Arial; margin: 0; background: #f4f4f4; }
 
 header {
-  background: #2e7d32;
+  background: #0366d6;
   color: white;
-  padding: 999px;
+  padding: 10px;
   text-align: center;
-
+    margin: auto;
+ max-width: 1200px;
 }
 
 .container {
