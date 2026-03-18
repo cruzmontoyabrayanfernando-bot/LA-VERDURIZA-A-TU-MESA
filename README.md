@@ -13,6 +13,7 @@ header {
   color: white;
   padding: 1000px;
   text-align: center;
+    margin: auto;
 }
 
 .container {
