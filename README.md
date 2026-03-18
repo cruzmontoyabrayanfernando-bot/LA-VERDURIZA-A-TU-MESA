@@ -137,7 +137,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 
   #cartBox {
