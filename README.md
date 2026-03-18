@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -8,44 +8,21 @@
 <style>
 body { font-family: Arial; margin: 0; background: #f4f4f4; }
 
-/* HEADER PRO */
 header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(46, 125, 50, 0.95);
-  backdrop-filter: blur(10px);
+  background: #2e7d32;
   color: white;
-  padding: 12px 15px;
+  padding: 20px;
+  text-align: center;
 }
 
-.header-content {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-text h1 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.header-text p {
-  margin: 0;
-  font-size: 13px;
-  opacity: 0.9;
-}
-
-/* CONTENEDOR */
+/* CONTENEDOR RESPONSIVE */
 .container {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
 }
 
-/* GRID */
+/* GRID RESPONSIVE */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -98,7 +75,7 @@ button:hover { background: #2e7d32; }
   width: auto;
 }
 
-/* CARRITO */
+/* CARRITO PRO */
 #cartBox {
   position: fixed;
   bottom: 15px;
@@ -114,11 +91,25 @@ button:hover { background: #2e7d32; }
   gap: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 999;
+  transition: transform 0.2s;
+}
+
+#cartBox:hover {
+  transform: scale(1.05);
 }
 
 #cartBox img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
+}
+
+#cartBox span {
+  font-size: 14px;
+}
+
+#cartBox p {
+  margin: 0;
+  font-size: 16px;
 }
 
 /* MODAL */
@@ -151,33 +142,15 @@ button:hover { background: #2e7d32; }
   font-weight: bold;
 }
 
+#changeText {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 /* MOBILE */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 
-  header {
-    padding: 10px;
-  }
-
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-  }
-
-  .header-text h1 {
-    font-size: 18px;
-  }
-
-  .header-text p {
-    font-size: 12px;
-  }
-
-  .whatsapp-btn {
-    width: 100%;
-    justify-content: center;
-    font-size: 14px;
-    padding: 10px;
-  }
+  header h1 { font-size: 100%; }
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -187,12 +160,18 @@ button:hover { background: #2e7d32; }
     height: 90px;
   }
 
+  button {
+    padding: 12px;
+    font-size: 16px;
+  }
+
   #cartBox {
     width: calc(100% - 20px);
     right: 10px;
     left: 10px;
     justify-content: center;
   }
+
 }
 </style>
 </head>
@@ -200,14 +179,8 @@ button:hover { background: #2e7d32; }
 <body>
 
 <header>
-  <div class="header-content">
-
-    <div class="header-text">
-      <h1>🥬 La Verduriza</h1>
-      <p>Frutas y verduras frescas hasta tu puerta</p>
-    </div>
-
-  </div>
+<h1>🥬 La Verduriza</h1>
+<p>Frutas y verduras frescas hasta tu puerta</p>
 </header>
 
 <div class="container">
@@ -215,6 +188,7 @@ button:hover { background: #2e7d32; }
 <div class="grid" id="products"></div>
 </div>
 
+<!-- CARRITO MEJORADO -->
 <div id="cartBox" onclick="openModal()">
   <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
   <div>
@@ -223,6 +197,7 @@ button:hover { background: #2e7d32; }
   </div>
 </div>
 
+<!-- MODAL -->
 <div id="modal">
 <div class="modal-content">
 
@@ -235,20 +210,28 @@ button:hover { background: #2e7d32; }
 
 <h3>Datos de entrega</h3>
 
-<input type="text" id="name" placeholder="Nombre">
-<input type="text" id="address" placeholder="Dirección">
-<textarea id="references" placeholder="Referencias"></textarea>
+<label>Nombre:</label>
+<input type="text" id="name">
 
+<label>Dirección:</label>
+<input type="text" id="address">
+
+<label>Referencias:</label>
+<textarea id="references"></textarea>
+
+<label>Método de pago:</label>
 <select id="payment">
   <option value="Efectivo">Efectivo</option>
   <option value="Transferencia">Transferencia</option>
 </select>
 
-<input type="number" id="cash" placeholder="¿Con cuánto paga?" oninput="calculateChange()">
+<label>¿Con cuánto paga?</label>
+<input type="number" id="cash" oninput="calculateChange()">
 
 <p id="changeText"></p>
 
-<textarea id="extra" placeholder="¿Buscas algo más?"></textarea>
+<label>¿No encontraste lo que buscas?</label>
+<textarea id="extra"></textarea>
 
 <button onclick="sendWhatsApp()">Confirmar pedido</button>
 
@@ -256,6 +239,7 @@ button:hover { background: #2e7d32; }
 </div>
 
 <script>
+
 const products = [
   { name: "Guineo", price: 20, img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
   { name: "Plátano", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
@@ -311,6 +295,7 @@ function removeFromCart(index) {
   cart.splice(index, 1);
   renderCart();
   updateTotal();
+  calculateChange();
 }
 
 function renderCart() {
@@ -368,24 +353,53 @@ function calculateChange() {
 }
 
 function sendWhatsApp() {
+
   const name = document.getElementById("name").value.trim();
   const address = document.getElementById("address").value.trim();
+  const references = document.getElementById("references").value.trim();
+  const payment = document.getElementById("payment").value;
+  const cash = parseFloat(document.getElementById("cash").value) || 0;
+  const extra = document.getElementById("extra").value.trim();
 
   if (!name || !address) {
     alert("Completa nombre y dirección");
     return;
   }
 
-  let message = "🛒 Pedido - La Verduriza %0A";
+  let message = "🛒 *Pedido - La Verduriza* %0A%0A";
+
+  message += `👤 ${name}%0A📍 ${address}%0A📝 ${references}%0A`;
+  message += `💳 Pago: ${payment}%0A`;
+
+  if (payment === "Efectivo") {
+    message += `💵 Paga con: $${cash}%0A`;
+
+    if (cash >= total) {
+      const cambio = cash - total;
+      message += `🔄 Cambio: $${cambio}%0A`;
+    } else {
+      message += `⚠️ Falta: $${(total - cash)}%0A`;
+    }
+  }
+
+  message += "%0A🧺 *Productos:* %0A";
 
   cart.forEach(item => {
-    message += `${item.name} ${item.qty}kg $${item.subtotal}%0A`;
+    message += `• ${item.name} - ${item.qty} kg = $${item.subtotal}%0A`;
   });
 
-  message += `Total: $${total}`;
+  if (extra) {
+    message += `%0A❓ También busco:%0A${extra}%0A`;
+  }
 
-  window.open(`https://wa.me/5219613267670?text=${message}`, "_blank");
+  message += `%0ATotal: $${total}`;
+
+  const phone = "5219613267670";
+  const url = `https://wa.me/${phone}?text=${message}`;
+
+  window.open(url, "_blank");
 }
+
 </script>
 
 </body>
