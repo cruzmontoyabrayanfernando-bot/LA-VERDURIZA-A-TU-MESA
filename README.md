@@ -104,7 +104,7 @@ button:hover { background: #0366d6; }
 }
 
 #cartBox img {
-  width: 60px;
+  width: 100px;
 }
 
 /* MODAL */
