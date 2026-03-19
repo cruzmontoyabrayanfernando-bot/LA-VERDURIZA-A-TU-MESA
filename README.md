@@ -26,7 +26,7 @@ header {
 /* GRID RESPONSIVE */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 14px;
 }
 
@@ -149,7 +149,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 460px) {
+@media (max-width: 200px) {
 
   header h1 { font-size: 100%; }
 
