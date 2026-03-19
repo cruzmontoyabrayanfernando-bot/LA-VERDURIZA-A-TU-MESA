@@ -81,7 +81,6 @@ button:hover { background: #2e7d32; }
   position: fixed;
   bottom: 5px;
   right: 5px;
-  TOP: 70%;
   background: #ff9800;
   padding: 2px   10px;
   border-radius: 50px;
@@ -150,7 +149,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 350px) {
+@media (max-width: 460px) {
 
   header h1 { font-size: 100%; }
 
@@ -159,7 +158,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 55px;
+    height: 50px;
   }
 
   button {
