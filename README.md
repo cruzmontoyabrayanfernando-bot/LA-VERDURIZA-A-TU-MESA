@@ -21,7 +21,7 @@ header {
   padding: 100px;
   width: 50%;/* CONTENEDOR A CORREGIR */
   margin: auto;
-  SIZE:100%;
+ LEFT:100%;
 }
 
 /* GRID RESPONSIVE */
