@@ -19,8 +19,9 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  width: AUTO;/* CONTENEDOR A CORREGIR */
+  width: 50%;/* CONTENEDOR A CORREGIR */
   margin: auto;
+  SIZE:100%;
 }
 
 /* GRID RESPONSIVE */
