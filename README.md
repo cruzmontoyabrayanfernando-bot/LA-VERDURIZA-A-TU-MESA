@@ -19,7 +19,7 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  max-width: 100%;/* CONTENEDOR A CORREGIR */
+  max-width: AUTO;/* CONTENEDOR A CORREGIR */
   margin: auto;
 }
 
@@ -185,7 +185,7 @@ button:hover { background: #2e7d32; }
 </header>
 
 <div class="container">
-<h1>Productos</h1>
+<h2>Productos</h2>
 <div class="grid" id="products"></div>
 </div>
 
