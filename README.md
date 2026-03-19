@@ -79,10 +79,11 @@ button:hover { background: #2e7d32; }
 /* CARRITO PRO */
 #cartBox {
   position: fixed;
-  bottom: 10px;
+  bottom: 5px;
   right: 5px;
+  TOP: 70%;
   background: #ff9800;
-  padding: 2px 20px;
+  padding: 2px   10px;
   border-radius: 50px;
   cursor: pointer;
   color: white;
