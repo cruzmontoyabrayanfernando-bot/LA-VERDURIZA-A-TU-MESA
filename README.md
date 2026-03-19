@@ -19,9 +19,8 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  width: 120%;/* CONTENEDOR A CORREGIR */
+  width: 100%;/* CONTENEDOR A CORREGIR */
   margin: auto;
- LEFT:100%;
 }
 
 /* GRID RESPONSIVE */
@@ -150,7 +149,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 180px) {
+@media (max-width: 460px) {
 
   header h1 { font-size: 100%; }
 
@@ -159,7 +158,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 90px;
+    height: 50px;
   }
 
   button {
