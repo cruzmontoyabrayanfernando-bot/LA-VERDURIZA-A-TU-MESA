@@ -26,7 +26,7 @@ header {
 /* GRID RESPONSIVE */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 14px;
 }
 
@@ -40,8 +40,8 @@ header {
 }
 
 .product-img {
-  width: 100%;
-  height: 140px;
+  width: 90%;
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -62,7 +62,7 @@ button {
   background: #43a047;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 5px;
@@ -79,7 +79,7 @@ button:hover { background: #2e7d32; }
 /* CARRITO PRO */
 #cartBox {
   position: fixed;
-  bottom: 15px;
+  bottom: 10px;
   right: 15px;
   background: #ff9800;
   padding: 12px 15px;
@@ -100,12 +100,12 @@ button:hover { background: #2e7d32; }
 }
 
 #cartBox img {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 30px;
 }
 
 #cartBox span {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 #cartBox p {
@@ -130,8 +130,8 @@ button:hover { background: #2e7d32; }
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 95%;
-  max-width: 420px;
+  width: 90%;
+  max-width: 400px;
   max-height: 90vh;
   overflow-y: auto;
 }
@@ -149,7 +149,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 200px) {
+@media (max-width: 360px) {
 
   header h1 { font-size: 100%; }
 
@@ -158,7 +158,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 50px;
+    height: 60px;
   }
 
   button {
