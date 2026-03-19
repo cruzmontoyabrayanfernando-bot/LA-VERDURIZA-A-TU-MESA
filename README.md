@@ -80,9 +80,9 @@ button:hover { background: #2e7d32; }
 #cartBox {
   position: fixed;
   bottom: 10px;
-  right: 15px;
+  right: 5px;
   background: #ff9800;
-  padding: 12px 15px;
+  padding: 2px 20px;
   border-radius: 50px;
   cursor: pointer;
   color: white;
@@ -149,7 +149,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 360px) {
+@media (max-width: 350px) {
 
   header h1 { font-size: 100%; }
 
@@ -158,7 +158,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 60px;
+    height: 55px;
   }
 
   button {
