@@ -18,9 +18,9 @@ header {
 
 /* CONTENEDOR RESPONSIVE */
 .container {
-  padding: 70px;
+  padding: 100px;
   width: 100%;/* CONTENEDOR A CORREGIR */
-  margin: auto;
+  margin: 0%;
 }
 
 /* GRID RESPONSIVE */
@@ -100,12 +100,12 @@ button:hover { background: #2e7d32; }
 }
 
 #cartBox img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 #cartBox span {
-  font-size: 14px;
+  font-size: 30px;
 }
 
 #cartBox p {
