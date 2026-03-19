@@ -19,7 +19,7 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  max-width: 1200px;
+  max-width: 100%;/* CONTENEDOR A CORREGIR */
   margin: auto;
 }
 
@@ -41,7 +41,7 @@ header {
 
 .product-img {
   width: 100%;
-  height: 120px;
+  height: 140px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -149,7 +149,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 380px) {
+@media (max-width: 180px) {
 
   header h1 { font-size: 100%; }
 
@@ -180,18 +180,18 @@ button:hover { background: #2e7d32; }
 <body>
 
 <header>
-<h1>🥬 La Verduriza</h1>
-<p>Frutas y verduras frescas hasta tu puerta</p>
+<h1>LA VERDURIZA</h1>
+<p>FRUTAS Y VERDURAS FRESCAS HASTA LA PUERTA DE TU CASA</p>
 </header>
 
 <div class="container">
-<h2>Productos</h2>
+<h1>Productos</h1>
 <div class="grid" id="products"></div>
 </div>
 
-<!-- CARRITO MEJORADO -->
+<!-- CARRITO DE COMPRA-->
 <div id="cartBox" onclick="openModal()">
-  <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+  <img src="https://img.pikbest.com/png-images/20240926/png-of-supermarket-shopping-cart-filled-with-groceries-e2-80-93transparent-background_10889722.png!bw700">
   <div>
     <span>Carrito</span>
     <p>$<span id="total">0</span></p>
