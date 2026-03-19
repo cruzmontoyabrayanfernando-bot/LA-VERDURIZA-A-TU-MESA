@@ -18,7 +18,7 @@ header {
 
 /* CONTENEDOR RESPONSIVE */
 .container {
-  padding: 100px;
+  padding: 70px;
   width: 100%;/* CONTENEDOR A CORREGIR */
   margin: auto;
 }
@@ -27,7 +27,7 @@ header {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 2px;
+  gap: 14px;
 }
 
 /* TARJETAS */
