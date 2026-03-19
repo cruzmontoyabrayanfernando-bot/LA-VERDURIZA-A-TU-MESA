@@ -327,10 +327,14 @@ function openModal() {
   }
 
   document.getElementById("modal").style.display = "flex";
+   // 👇 OCULTAR CARRITO
+  document.getElementById("cartBox").style.display = "none";
 }
 
 function closeModal() {
   document.getElementById("modal").style.display = "none";
+  // 👇 MOSTRAR CARRITO
+  document.getElementById("cartBox").style.display = "flex";
 }
 
 function calculateChange() {
