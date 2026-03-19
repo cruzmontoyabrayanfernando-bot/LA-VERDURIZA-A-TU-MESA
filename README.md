@@ -101,7 +101,7 @@ button:hover { background: #2e7d32; }
 
 #cartBox img {
   width: 40px;
-  height: 30px;
+  height: 40px;
 }
 
 #cartBox span {
@@ -130,7 +130,7 @@ button:hover { background: #2e7d32; }
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 90%;
+  width: 70%;
   max-width: 400px;
   max-height: 90vh;
   overflow-y: auto;
