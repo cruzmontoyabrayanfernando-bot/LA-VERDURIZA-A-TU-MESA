@@ -20,13 +20,13 @@ header {
 .container {
   padding: 100px;
   width: 100%;/* CONTENEDOR A CORREGIR */
-  margin: 0%;
+  margin:AUTO;
 }
 
 /* GRID RESPONSIVE */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
   gap: 14px;
 }
 
@@ -100,8 +100,8 @@ button:hover { background: #2e7d32; }
 }
 
 #cartBox img {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
 }
 
 #cartBox span {
