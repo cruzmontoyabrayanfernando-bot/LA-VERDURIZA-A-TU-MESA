@@ -62,10 +62,10 @@ button {
   background: #43a047;
   color: white;
   border: none;
-  padding: 15px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-top: 5px;
+  margin-top: 2px;
   width: 100%;
 }
 
@@ -162,14 +162,14 @@ button:hover { background: #2e7d32; }
   }
 
   button {
-    padding: 15x;
-    font-size: 16px;
+    padding: 10x;
+    font-size: 14px;
   }
 
   #cartBox {
     width: calc(100% - 20px);
-    right: 10px;
-    left: 10px;
+    right: 7px;
+    left: 7px;
     justify-content: center;
   }
 
