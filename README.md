@@ -20,7 +20,7 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  width: 100%;/* CONTENEDOR A CORREGIR */
+  width: 50%;/* CONTENEDOR A CORREGIR */
   margin: auto;  /*corregido*/
 }
 
