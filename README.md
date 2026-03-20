@@ -42,8 +42,8 @@ header {
 }
 
 .product-img {
-  width: 50%;
-  height: 120px;
+  width: auto;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -151,7 +151,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: AUTO) {
+@media (max-width: 460px) {
 
   header h1 { font-size: 100%; }
 
@@ -160,7 +160,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 25px;
+    height: 50px;
   }
 
   button {
