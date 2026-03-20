@@ -33,7 +33,7 @@ header {
 
 /* TARJETAS */
 .card {
-  margin: 100%; /*corregido*/
+  margin: auto; /*corregido*/
   background: white;
   padding: 12px;
   border-radius: 10px;
@@ -152,7 +152,6 @@ button:hover { background: #2e7d32; }
 
 /* MOBILE */
 @media (max-width: 460px) {
-  margin: center; /*corregido*/
 
   header h1 { font-size: 100%; }
 
@@ -161,7 +160,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: auto;
+    height: 100%;
   }
 
   button {
