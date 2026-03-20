@@ -33,7 +33,6 @@ header {
 
 /* TARJETAS */
 .card {
-  max-width: 100%;
   margin: auto; /*corregido*/
   background: white;
   padding: 12px;
@@ -153,6 +152,7 @@ button:hover { background: #2e7d32; }
 
 /* MOBILE */
 @media (max-width: 460px) {
+  margin: center; /*corregido*/
 
   header h1 { font-size: 100%; }
 
