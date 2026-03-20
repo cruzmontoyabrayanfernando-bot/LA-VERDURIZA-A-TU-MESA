@@ -33,7 +33,7 @@ header {
 
 /* TARJETAS */
 .card {
-  margin: 100px; /*corregido*/
+  margin: auto; /*corregido*/
   background: white;
   padding: 12px;
   border-radius: 10px;
@@ -160,7 +160,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 40%;
+    height: 60%;
   }
 
   button {
@@ -244,14 +244,14 @@ button:hover { background: #2e7d32; }
 <script>
 
 const products = [
-  { name: "Guineo", price: 20, img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
-  { name: "Plátano", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
-  { name: "Naranja", price: 20, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" },
-  { name: "Tomate", price: 20, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
-  { name: "Aguacate", price: 20, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Primera.webp?v=1744306706&width=600" },
-  { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
-   { name: "Chayote", price: 20, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
-  { name: "Zanahoria", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
+  { name: "Guineo", price: 22, img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
+  { name: "Plátano", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
+  { name: "Naranja", price: 22, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" },
+  { name: "Tomate", price: 22, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
+  { name: "Aguacate", price: 22, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Primera.webp?v=1744306706&width=600" },
+  { name: "Cebolla", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
+   { name: "Chayote", price: 22, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
+  { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
   
   
 ];
