@@ -9,6 +9,7 @@
 body { font-family: Arial; margin: 0; background: #f4f4f4; }
 
 header {
+  margin: center; /*corregido*/
   background: #2e7d32;
   color: white;
   padding: 10px;
@@ -19,8 +20,8 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  width: 100%;/* CONTENEDOR A CORREGIR */
-  margin:AUTO;
+  width: 90%;/* CONTENEDOR A CORREGIR */
+  margin:center;  /*corregido*/
 }
 
 /* GRID RESPONSIVE */
@@ -32,6 +33,7 @@ header {
 
 /* TARJETAS */
 .card {
+  margin: auto; /*corregido*/
   background: white;
   padding: 12px;
   border-radius: 10px;
