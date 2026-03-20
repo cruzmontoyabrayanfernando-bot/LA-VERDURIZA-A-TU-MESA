@@ -33,6 +33,7 @@ header {
 
 /* TARJETAS */
 .card {
+  max-width: 100%;
   margin: auto; /*corregido*/
   background: white;
   padding: 12px;
