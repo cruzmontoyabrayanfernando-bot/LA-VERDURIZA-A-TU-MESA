@@ -152,15 +152,15 @@ button:hover { background: #2e7d32; }
 
 /* MOBILE */
 @media (max-width: 460px) {
-
-  header h1 { font-size: 100%; }
+  
+  header h1 { font-size:100%; }
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .product-img {
-    height: 100%;
+    height: 40%;
   }
 
   button {
