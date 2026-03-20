@@ -20,7 +20,7 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  width: 50%;/* CONTENEDOR A CORREGIR */
+  width: 100%;/* CONTENEDOR A CORREGIR */
   margin: auto;  /*corregido*/
 }
 
@@ -42,7 +42,7 @@ header {
 }
 
 .product-img {
-  width: auto;
+  width: 50%;
   height: 120px;
   object-fit: cover;
   border-radius: 10px;
