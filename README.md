@@ -160,7 +160,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 60px;
+    height: 25px;
   }
 
   button {
