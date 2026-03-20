@@ -149,7 +149,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 460px) {
+@media (max-width: AUTO) {
 
   header h1 { font-size: 100%; }
 
@@ -158,7 +158,7 @@ button:hover { background: #2e7d32; }
   }
 
   .product-img {
-    height: 50px;
+    height: 60px;
   }
 
   button {
