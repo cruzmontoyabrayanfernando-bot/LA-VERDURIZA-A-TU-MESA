@@ -20,8 +20,8 @@ header {
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 100px;
-  width: 90%;/* CONTENEDOR A CORREGIR */
-  margin:center;  /*corregido*/
+  width: 100%;/* CONTENEDOR A CORREGIR */
+  margin: auto;  /*corregido*/
 }
 
 /* GRID RESPONSIVE */
@@ -42,7 +42,7 @@ header {
 }
 
 .product-img {
-  width: 90%;
+  width: auto;
   height: 120px;
   object-fit: cover;
   border-radius: 10px;
