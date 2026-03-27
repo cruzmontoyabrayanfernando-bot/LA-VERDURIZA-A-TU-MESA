@@ -140,6 +140,19 @@ button:hover { background: #0366d6; }
 /* MOBILE */
 @media (max-width: 500px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
+  .card {
+  background: white;
+  padding: 600px;
+  border-radius: 30px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+  
 
   #cartBox {
     width: calc(100% - 20px);
