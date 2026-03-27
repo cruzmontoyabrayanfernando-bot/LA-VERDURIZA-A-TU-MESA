@@ -6,57 +6,73 @@
 <title>La Verduriza</title>
 
 <style>
-body { font-family: Arial; margin: 0; background: #f4f4f4; }
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f4f4;
+}
 
+/* HEADER */
 header {
-  margin: center; /*corregido*/
-  background: #2e7d32;
+  background: #0366d6;
   color: white;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
-  left: 100%;
 }
 
-/* CONTENEDOR RESPONSIVE */
+/* CONTENEDOR */
 .container {
-  padding: 100px;
-  width: 100%;/* CONTENEDOR A CORREGIR */
-  margin: auto;  /*corregido*/
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* GRID RESPONSIVE */
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  justify-content: center; /* 👈 centra las tarjetas */
+  gap: 15px;
 }
 
 /* TARJETAS */
 .card {
-  margin: AUTO; /*corregido*/
   background: white;
-  padding: 4px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   text-align: center;
+  transition: transform 0.2s;
+  width: 100%;
 }
 
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* IMAGEN */
 .product-img {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 10px;
 }
 
-/* INPUTS */
-input, textarea, select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+/* CONTROLES */
+.qty-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.qty-controls button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   font-size: 16px;
+  padding: 0;
 }
 
 /* BOTONES */
@@ -64,60 +80,42 @@ button {
   background: #43a047;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 2px;
-  width: 100%;
 }
 
-button:hover { background: #2e7d32; }
+button:hover {
+  background: #0366d6;
+}
 
 .remove-btn {
   background: red;
-  width: auto;
 }
 
-/* CARRITO PRO */
+/* CARRITO */
 #cartBox {
   position: fixed;
-  bottom: 5px;
-  right: 5px;
+  bottom: 15px;
+  right: 15px;
   background: #ff9800;
-  padding: 2px   10px;
+  padding: 10px 15px;
   border-radius: 50px;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
   z-index: 999;
-  transition: transform 0.2s;
-}
-
-#cartBox:hover {
-  transform: scale(1.05);
 }
 
 #cartBox img {
-  width: 40px;
-  height: 40px;
-}
-
-#cartBox span {
-  font-size: 20px;
-}
-
-#cartBox p {
-  margin: 0;
-  font-size: 16px;
+  width: 30px;
 }
 
 /* MODAL */
 #modal {
-  MARGIN: CENTER;/*CORREGIDO*/
   display: none;
   position: fixed;
   top: 0;
@@ -130,11 +128,10 @@ button:hover { background: #2e7d32; }
 }
 
 .modal-content {
-  MARGIN: CENTER;
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 70%;
+  width: 95%;
   max-width: 400px;
   max-height: 90vh;
   overflow-y: auto;
@@ -144,39 +141,26 @@ button:hover { background: #2e7d32; }
   float: right;
   cursor: pointer;
   color: red;
-  font-weight: bold;
 }
 
-#changeText {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* MOBILE */
+/* 📱 MOBILE */
 @media (max-width: 500px) {
-  
-  header h1 { font-size:100%; }
-
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    justify-content: center;
   }
 
-  .product-img {
-    height: 60%;
-  }
-
-  button {
-    padding: 10x;
-    font-size: 14px;
+  .card {
+    max-width: 160px;
+    margin: auto;
   }
 
   #cartBox {
     width: calc(100% - 20px);
-    right: 7px;
-    left: 7px;
+    left: 10px;
+    right: 10px;
     justify-content: center;
   }
-
 }
 </style>
 </head>
