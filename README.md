@@ -4,10 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Verduriza</title>
+title>La Verduriza</title>
+
+<!-- 🔥 LEAFLET -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <style>
 body { font-family: Arial; margin: 0; background: #f4f4f4; }
-
 header {
   background: #2e7d32;
   color: white;
@@ -198,8 +202,15 @@ button:hover { background: #2e7d32; }
 <input type="text" id="name">
 
 <label>Dirección:</label>
-<input type="text" id="address">
+<input type="text" id="address" placeholder="Escribe tu dirección o usa ubicación">
+
 <button onclick="getLocation()">📍 Usar mi ubicación actual</button>
+
+<small style="color:gray;">
+Si la ubicación no es correcta, selecciona manualmente:
+</small>
+
+<div id="map" style="height:250px; border-radius:10px; margin-top:10px;"></div>
 <label>Referencias:</label>
 <textarea id="references"></textarea>
 
@@ -241,7 +252,7 @@ let total = 0;
 
 /* 🔥 VARIABLE GLOBAL PARA UBICACIÓN */
 let userCoords = "";
-
+let map, marker;
 const container = document.getElementById("products");
 
 products.forEach((p, i) => {
@@ -317,6 +328,19 @@ function openModal() {
 
   document.getElementById("modal").style.display = "flex";
   document.getElementById("cartBox").style.display = "none";
+
+  // 👉 Cargar mapa
+  setTimeout(() => {
+    if (!map) {
+      initMap();
+    } else {
+      map.invalidateSize();
+    }
+  }, 300);
+}
+
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("cartBox").style.display = "none";
 }
   
 function closeModal() {
@@ -361,6 +385,28 @@ function getLocation() {
         maximumAge: 0
       }
     );
+    function initMap() {
+  map = L.map('map').setView([20.5888, -100.3899], 13); // Querétaro
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  map.on('click', function(e) {
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+
+    userCoords = lat + "," + lng;
+
+    if (marker) {
+      map.removeLayer(marker);
+    }
+
+    marker = L.marker([lat, lng]).addTo(map);
+
+    document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
+  });
+}
   } else {
     alert("Tu navegador no soporta ubicación");
   }
