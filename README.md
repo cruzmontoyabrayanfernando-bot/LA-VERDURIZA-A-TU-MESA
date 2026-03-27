@@ -230,10 +230,10 @@ const products = [
   { name: "Tomate", price: 42, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
   { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
   { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
-    { name: "Aguacate", price: 60, img: "[[[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574)" },
-   { name: "Chayote", price: 27, img: "[[[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png)" },
- { name: "Piña", price: 22, img: "[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.centralenlinea.com/images/thumbs/003/0037748_pina-baby-800g-aprox_550.png)" },  
-{ name: "Coco", price: 20, img: "[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.centralenlinea.com/images/thumbs/002/0022129_coco-de-agua-con-cascara-chico_550.jpeg)" }
+    { name: "Aguacate", price: 60, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
+   { name: "Chayote", price: 27, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
+ { name: "Piña", price: 22, img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },  
+{ name: "Coco", price: 20, img: "https://mcgarlet.it/wp-content/uploads/2024/09/Video_McGarlet_COCCO.mp4" }
 ];
 
 let cart = [];
