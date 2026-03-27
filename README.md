@@ -151,7 +151,7 @@ button:hover {
   }
 
   .card {
-    max-width: 160px;
+    max-width: 100px;
     margin: auto;
   }
 
