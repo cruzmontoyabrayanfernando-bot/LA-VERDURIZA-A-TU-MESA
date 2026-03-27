@@ -199,7 +199,7 @@ button:hover { background: #2e7d32; }
 
 <label>Dirección:</label>
 <input type="text" id="address">
-
+<button onclick="getLocation()">📍 Usar mi ubicación actual</button>
 <label>Referencias:</label>
 <textarea id="references"></textarea>
 
@@ -318,7 +318,7 @@ function openModal() {
   // 👉 OCULTAR CARRITO
   document.getElementById("cartBox").style.display = "none";
 }
-
+  
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 
@@ -360,6 +360,7 @@ function sendWhatsApp() {
     return;
   }
 
+
   let message = "🛒 *Pedido - La Verduriza* %0A%0A";
 
   // Convertir dirección en link de Google Maps
@@ -367,7 +368,13 @@ const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
 
 message += `👤 ${name}%0A`;
 message += `📍 Dirección: ${address}%0A`;
-message += `🗺️ Ver en Google Maps: ${mapsLink}%0A`;
+
+// 👉 UBICACIÓN GPS (IMPORTANTE)
+if (userCoords) {
+  const mapsLink = `https://maps.google.com/?q=${userCoords}`;
+  message += `📍 Ubicación actual: ${mapsLink}%0A`;
+}
+
 message += `📝 ${references}%0A`;
   message += `💳 Pago: ${payment}%0A`;
 
