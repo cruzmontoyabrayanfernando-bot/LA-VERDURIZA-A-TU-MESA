@@ -230,7 +230,7 @@ const products = [
   { name: "Tomate", price: 42, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
   { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
   { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
-    { name: "Aguacate", price: 60, img: "[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)" },
+    { name: "Aguacate", price: 60, img: "[[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)" },
 ];
 
 let cart = [];
