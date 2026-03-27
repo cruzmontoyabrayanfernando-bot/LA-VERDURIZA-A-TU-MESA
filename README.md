@@ -6,53 +6,64 @@
 <title>La Verduriza</title>
 
 <style>
-body { font-family: Arial; margin: 0; background: #f4f4f4; }
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f4f4;
+}
 
+/* HEADER */
 header {
   background: #0366d6;
   color: white;
-  padding: 100%;
+  padding: 20px;
   text-align: center;
 }
 
+/* CONTENEDOR */
 .container {
-  padding: 100px;
+  padding: 20px;
   max-width: 1200px;
   margin: auto;
 }
 
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  justify-content: center; /* 👈 centra las tarjetas */
+  gap: 15px;
 }
 
+/* TARJETAS */
 .card {
   background: white;
-  padding: 600px;
-  border-radius: 30px;
+  padding: 15px;
+  border-radius: 15px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   text-align: center;
   transition: transform 0.2s;
+  width: 100%;
 }
 
 .card:hover {
   transform: scale(1.03);
 }
 
+/* IMAGEN */
 .product-img {
   width: 100%;
-  height: 110px;
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
 }
 
-/* CONTROLES + - */
+/* CONTROLES */
 .qty-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 10px 0;
 }
 
@@ -60,13 +71,8 @@ header {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 16px;
   padding: 0;
-}
-
-.qty-number {
-  font-size: 18px;
-  font-weight: bold;
 }
 
 /* BOTONES */
@@ -74,12 +80,14 @@ button {
   background: #43a047;
   color: white;
   border: none;
-  padding: 100px;
+  padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
 }
 
-button:hover { background: #0366d6; }
+button:hover {
+  background: #0366d6;
+}
 
 .remove-btn {
   background: red;
@@ -91,7 +99,7 @@ button:hover { background: #0366d6; }
   bottom: 15px;
   right: 15px;
   background: #ff9800;
-  padding: 12px 15px;
+  padding: 10px 15px;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -99,12 +107,11 @@ button:hover { background: #0366d6; }
   color: white;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 999;
 }
 
 #cartBox img {
-  width: 100px;
+  width: 30px;
 }
 
 /* MODAL */
@@ -122,13 +129,12 @@ button:hover { background: #0366d6; }
 
 .modal-content {
   background: white;
-  padding: 0px;
+  padding: 20px;
   border-radius: 10px;
   width: 95%;
-  max-width: 420px;
+  max-width: 400px;
   max-height: 90vh;
   overflow-y: auto;
- margin: auto;
 }
 
 .close {
@@ -137,22 +143,17 @@ button:hover { background: #0366d6; }
   color: red;
 }
 
-/* MOBILE */
+/* 📱 MOBILE */
 @media (max-width: 500px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .card {
-  background: white;
-  padding: 300px;
-  border-radius: 30px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-  text-align: center;
-  transition: transform 0.2s;
-}
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    justify-content: center;
+  }
 
-.card:hover {
-  transform: scale(1.03);
-}
-  
+  .card {
+    max-width: 160px;
+    margin: auto;
+  }
 
   #cartBox {
     width: calc(100% - 20px);
@@ -279,7 +280,7 @@ function renderCart() {
       <div>
         ${item.name} x${item.qty} = $${item.subtotal}
         <button class="remove-btn" onclick="removeFromCart(${i})">X</button>
-      </div>
+      </div>M
     `;
   });
 }
@@ -321,8 +322,6 @@ function sendWhatsApp() {
 
   window.open(`https://wa.me/5219613267670?text=${message}`);
 }
-
 </script>
-
 </body>
 </html>
