@@ -52,7 +52,7 @@ header {
 
 /* IMAGEN */
 .product-img {
-  width: 50%;
+  width: 80%;
   height: 120px;
   object-fit: cover;
   border-radius: 10px;
