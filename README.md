@@ -142,7 +142,7 @@ button:hover { background: #0366d6; }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .card {
   background: white;
-  padding: 600px;
+  padding: 300px;
   border-radius: 30px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   text-align: center;
