@@ -328,16 +328,32 @@ function closeModal() {
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      function(position) {
+      async function(position) {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
+        // 👉 Guardar coordenadas
         userCoords = lat + "," + lng;
 
-        alert("Ubicación capturada con alta precisión 📍");
+        // 👉 PONER COORDENADAS EN EL INPUT (rápido y seguro)
+        document.getElementById("address").value = `Ubicación GPS: ${lat}, ${lng}`;
+
+        // 🔥 OPCIONAL: intentar convertir a dirección real
+        try {
+          const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+          const data = await response.json();
+
+          if (data && data.display_name) {
+            document.getElementById("address").value = data.display_name;
+          }
+        } catch (error) {
+          console.log("No se pudo obtener dirección exacta");
+        }
+
+        alert("Ubicación agregada automáticamente 📍");
       },
       function(error) {
-        alert("Activa la ubicación ❌");
+        alert("Activa la ubicación en tu celular ❌");
       },
       {
         enableHighAccuracy: true,
