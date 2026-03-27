@@ -230,14 +230,17 @@ const products = [
   { name: "Tomate", price: 42, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
   { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
   { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
-    { name: "Aguacate", price: 60, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
-   { name: "Chayote", price: 27, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
- { name: "Piña", price: 22, img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },  
-{ name: "Coco", price: 20, img: "https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/virgilio07/AKqdQ8xrAATCdxfb8DZYDby56EgKbdFArxK1tK9PyNpjfvTVRGq2dSy8BMmFufA.gif" }
+  { name: "Aguacate", price: 60, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
+  { name: "Chayote", price: 27, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
+  { name: "Piña", price: 22, img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },  
+  { name: "Coco", price: 20, img: "https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/virgilio07/AKqdQ8xrAATCdxfb8DZYDby56EgKbdFArxK1tK9PyNpjfvTVRGq2dSy8BMmFufA.gif" }
 ];
 
 let cart = [];
 let total = 0;
+
+/* 🔥 VARIABLE GLOBAL PARA UBICACIÓN */
+let userCoords = "";
 
 const container = document.getElementById("products");
 
@@ -304,7 +307,6 @@ function renderCart() {
   });
 }
 
-/* 🔥 AQUÍ ESTÁ LA MEJORA */
 function openModal() {
   renderCart();
 
@@ -314,16 +316,33 @@ function openModal() {
   }
 
   document.getElementById("modal").style.display = "flex";
-
-  // 👉 OCULTAR CARRITO
   document.getElementById("cartBox").style.display = "none";
 }
   
 function closeModal() {
   document.getElementById("modal").style.display = "none";
-
-  // 👉 MOSTRAR CARRITO
   document.getElementById("cartBox").style.display = "flex";
+}
+
+/* 🔥 FUNCIÓN DE UBICACIÓN (YA FUNCIONAL) */
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        userCoords = lat + "," + lng;
+
+        alert("Ubicación capturada 📍");
+      },
+      function(error) {
+        alert("Activa la ubicación en tu celular ❌");
+      }
+    );
+  } else {
+    alert("Tu navegador no soporta ubicación");
+  }
 }
 
 function calculateChange() {
@@ -347,27 +366,6 @@ function calculateChange() {
 }
 
 function sendWhatsApp() {
-  let userCoords = "";
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-
-        userCoords = lat + "," + lng;
-
-        alert("Ubicación capturada 📍");
-      },
-      function(error) {
-        alert("Error al obtener ubicación ❌");
-      }
-    );
-  } else {
-    alert("Tu navegador no soporta ubicación");
-  }
-}
 
   const name = document.getElementById("name").value.trim();
   const address = document.getElementById("address").value.trim();
@@ -381,22 +379,18 @@ function getLocation() {
     return;
   }
 
-
   let message = "🛒 *Pedido - La Verduriza* %0A%0A";
 
-  // Convertir dirección en link de Google Maps
-const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  message += `👤 ${name}%0A`;
+  message += `📍 Dirección: ${address}%0A`;
 
-message += `👤 ${name}%0A`;
-message += `📍 Dirección: ${address}%0A`;
+  /* 🔥 ENVÍA UBICACIÓN REAL */
+  if (userCoords) {
+    const mapsLink = `https://maps.google.com/?q=${userCoords}`;
+    message += `📍 Ubicación exacta: ${mapsLink}%0A`;
+  }
 
-// 👉 UBICACIÓN GPS (IMPORTANTE)
-if (userCoords) {
-  const mapsLink = `https://maps.google.com/?q=${userCoords}`;
-  message += `📍 Ubicación actual: ${mapsLink}%0A`;
-}
-
-message += `📝 ${references}%0A`;
+  message += `📝 ${references}%0A`;
   message += `💳 Pago: ${payment}%0A`;
 
   if (payment === "Efectivo") {
