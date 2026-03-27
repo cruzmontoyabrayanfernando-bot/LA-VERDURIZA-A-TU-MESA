@@ -347,6 +347,27 @@ function calculateChange() {
 }
 
 function sendWhatsApp() {
+  let userCoords = "";
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        userCoords = lat + "," + lng;
+
+        alert("Ubicación capturada 📍");
+      },
+      function(error) {
+        alert("Error al obtener ubicación ❌");
+      }
+    );
+  } else {
+    alert("Tu navegador no soporta ubicación");
+  }
+}
 
   const name = document.getElementById("name").value.trim();
   const address = document.getElementById("address").value.trim();
