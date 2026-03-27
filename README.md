@@ -151,7 +151,7 @@ button:hover { background: #2e7d32; }
 }
 
 /* MOBILE */
-@media (max-width: 460px) {
+@media (max-width: 500px) {
   
   header h1 { font-size:100%; }
 
