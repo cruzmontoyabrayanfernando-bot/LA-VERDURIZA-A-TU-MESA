@@ -233,7 +233,7 @@ const products = [
     { name: "Aguacate", price: 60, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
    { name: "Chayote", price: 27, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
  { name: "Piña", price: 22, img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },  
-{ name: "Coco", price: 20, img: "https://mcgarlet.it/wp-content/uploads/2024/09/Video_McGarlet_COCCO.mp4" }
+{ name: "Coco", price: 20, img: "https://mcgarlet.it/wp-content/uploads/2024/09/Video_McGarlet_COCCO.mp4" },
 ];
 
 let cart = [];
