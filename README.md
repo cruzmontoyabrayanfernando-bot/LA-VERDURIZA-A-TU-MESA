@@ -11,7 +11,7 @@ body { font-family: Arial; margin: 0; background: #f4f4f4; }
 header {
   background: #0366d6;
   color: white;
-  padding: 700px;
+  padding: 100%;
   text-align: center;
 }
 
