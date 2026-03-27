@@ -280,7 +280,7 @@ function renderCart() {
       <div>
         ${item.name} x${item.qty} = $${item.subtotal}
         <button class="remove-btn" onclick="removeFromCart(${i})">X</button>
-      </div>M
+      </div>
     `;
   });
 }
