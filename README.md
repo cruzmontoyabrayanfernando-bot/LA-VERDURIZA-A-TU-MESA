@@ -26,7 +26,7 @@ header {
 
 /* GRID RESPONSIVE */
 .grid {
-MARGIN: CENTER;
+MARGIN: AUTO;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 14px;
