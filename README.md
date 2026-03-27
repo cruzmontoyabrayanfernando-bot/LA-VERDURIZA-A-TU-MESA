@@ -231,6 +231,9 @@ const products = [
   { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
   { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
     { name: "Aguacate", price: 60, img: "[[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)" },
+   { name: "Chayote", price: 27, img: "[[[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://www.ventadefrutasyverduras.com.mx/wp-content/uploads/2019/10/aguacate-negro.jpg)](https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png)" },
+ { name: "Piña", price: 22, img: "[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.centralenlinea.com/images/thumbs/003/0037748_pina-baby-800g-aprox_550.png)" },  
+{ name: "Coco", price: 20, img: "[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s](https://www.centralenlinea.com/images/thumbs/002/0022129_coco-de-agua-con-cascara-chico_550.jpeg)" }
 ];
 
 let cart = [];
