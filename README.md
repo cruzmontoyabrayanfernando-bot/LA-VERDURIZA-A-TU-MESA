@@ -26,15 +26,14 @@ header {
 
 /* GRID RESPONSIVE */
 .grid {
-MARGIN: AUTO;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 14px;
 }
 
 /* TARJETAS */
 .card {
-  margin: CENETER; /*corregido*/
+  margin: AUTO; /*corregido*/
   background: white;
   padding: 12px;
   border-radius: 10px;
