@@ -327,19 +327,33 @@ function closeModal() {
 /* 🔥 FUNCIÓN DE UBICACIÓN (YA FUNCIONAL) */
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition(async function(position) {
 
-        userCoords = lat + "," + lng;
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
 
-        alert("Ubicación capturada 📍");
-      },
-      function(error) {
-        alert("Activa la ubicación en tu celular ❌");
+      // Guardar coordenadas
+      userCoords = lat + "," + lng;
+
+      // 🔥 CONVERTIR A DIRECCIÓN REAL
+      try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+        const data = await response.json();
+
+        const direccion = data.display_name;
+
+        // 👉 PONER LA DIRECCIÓN EN EL INPUT
+        document.getElementById("address").value = direccion;
+
+        alert("Ubicación y dirección capturadas 📍");
+
+      } catch (error) {
+        alert("Ubicación capturada, pero no se pudo obtener dirección");
       }
-    );
+
+    }, function() {
+      alert("Activa la ubicación en tu celular ❌");
+    });
   } else {
     alert("Tu navegador no soporta ubicación");
   }
