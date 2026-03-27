@@ -117,6 +117,7 @@ button:hover { background: #2e7d32; }
 
 /* MODAL */
 #modal {
+  MARGIN: CENTER;
   display: none;
   position: fixed;
   top: 0;
