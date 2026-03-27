@@ -117,7 +117,7 @@ button:hover { background: #2e7d32; }
 
 /* MODAL */
 #modal {
-  MARGIN: CENTER;
+  MARGIN: CENTER;/*CORREGIDO*/
   display: none;
   position: fixed;
   top: 0;
@@ -130,6 +130,7 @@ button:hover { background: #2e7d32; }
 }
 
 .modal-content {
+  MARGIN: CENTER;
   background: white;
   padding: 20px;
   border-radius: 10px;
