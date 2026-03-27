@@ -351,6 +351,16 @@ function getLocation() {
         const lng = position.coords.longitude;
 
         userCoords = lat + "," + lng;
+        / 👉 MOVER MAPA A LA UBICACIÓN DEL USUARIO
+if (map) {
+  map.setView([lat, lng], 16);
+
+  if (marker) {
+    map.removeLayer(marker);
+  }
+
+  marker = L.marker([lat, lng]).addTo(map);
+}
 
         document.getElementById("address").value = `Ubicación GPS: ${lat}, ${lng}`;
 
