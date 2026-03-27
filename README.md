@@ -6,7 +6,6 @@
     <title>La Verduriza - Frutas y Verduras</title>
 
   <style>
-    
         * { box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,7 +23,8 @@
 
         .container {
             padding: 20px;
-            max-width: 1000px;
+            max-width: 100%;  /* CORREGIDO
+        */
             margin: auto;
         }
 
