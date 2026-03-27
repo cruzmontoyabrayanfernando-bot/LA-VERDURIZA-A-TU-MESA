@@ -362,7 +362,13 @@ function sendWhatsApp() {
 
   let message = "🛒 *Pedido - La Verduriza* %0A%0A";
 
-  message += `👤 ${name}%0A📍 ${address}%0A📝 ${references}%0A`;
+  // Convertir dirección en link de Google Maps
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+message += `👤 ${name}%0A`;
+message += `📍 Dirección: ${address}%0A`;
+message += `🗺️ Ver en Google Maps: ${mapsLink}%0A`;
+message += `📝 ${references}%0A`;
   message += `💳 Pago: ${payment}%0A`;
 
   if (payment === "Efectivo") {
