@@ -225,7 +225,6 @@ button:hover {
 <button onclick="sendWhatsApp()">Confirmar pedido</button>
 
 </div>
-</div>
 
 <script>
 
