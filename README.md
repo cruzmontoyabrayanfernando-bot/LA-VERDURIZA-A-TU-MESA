@@ -327,7 +327,7 @@ function openModal() {
   document.getElementById("modal").style.display = "flex";
   document.getElementById("cartBox").style.display = "none";
 
-  // 👉 Cargar mapa
+  // 👉 Cargar mapa correctamente
   setTimeout(() => {
     if (!map) {
       initMap();
@@ -335,10 +335,6 @@ function openModal() {
       map.invalidateSize();
     }
   }, 300);
-}
-
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("cartBox").style.display = "none";
 }
   
 function closeModal() {
@@ -354,13 +350,10 @@ function getLocation() {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
-        // 👉 Guardar coordenadas
         userCoords = lat + "," + lng;
 
-        // 👉 PONER COORDENADAS EN EL INPUT (rápido y seguro)
         document.getElementById("address").value = `Ubicación GPS: ${lat}, ${lng}`;
 
-        // 🔥 OPCIONAL: intentar convertir a dirección real
         try {
           const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
           const data = await response.json();
@@ -383,28 +376,6 @@ function getLocation() {
         maximumAge: 0
       }
     );
-    function initMap() {
-  map = L.map('map').setView([20.5888, -100.3899], 13); // Querétaro
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap'
-  }).addTo(map);
-
-  map.on('click', function(e) {
-    const lat = e.latlng.lat;
-    const lng = e.latlng.lng;
-
-    userCoords = lat + "," + lng;
-
-    if (marker) {
-      map.removeLayer(marker);
-    }
-
-    marker = L.marker([lat, lng]).addTo(map);
-
-    document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
-  });
-}
   } else {
     alert("Tu navegador no soporta ubicación");
   }
@@ -484,6 +455,28 @@ function sendWhatsApp() {
   const url = `https://wa.me/${phone}?text=${message}`;
 
   window.open(url, "_blank");
+}
+  function initMap() {
+  map = L.map('map').setView([20.5888, -100.3899], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  map.on('click', function(e) {
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+
+    userCoords = lat + "," + lng;
+
+    if (marker) {
+      map.removeLayer(marker);
+    }
+
+    marker = L.marker([lat, lng]).addTo(map);
+
+    document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
+  });
 }
 </script>
 
