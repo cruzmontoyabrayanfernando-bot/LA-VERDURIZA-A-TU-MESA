@@ -275,7 +275,7 @@
     { name: "Chayote", price: 27, category: "Verduras", img: "..." },
 
     { name: "Aguacate", price: 60, category: "Abarrotes", img: "..." },
-    { name: "Piña", price: 22, category: "Frutas", img: "..." },
+    { name: "Piña", price: 22, category: "Chiles", img: "..." },
     { name: "Coco", price: 20, category: "Semillas", img: "..." }
 ];
     let cart = [];
