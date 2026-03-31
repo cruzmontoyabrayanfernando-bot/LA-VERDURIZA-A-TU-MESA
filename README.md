@@ -38,7 +38,6 @@ header {
 .cat-btn.active {
   color: #2e7d32;
   border-bottom: 3px solid #2e7d32;
-}
 }/*FIN DE CODIGO CCS/*
 /* CONTENEDOR RESPONSIVE */
 .container {
