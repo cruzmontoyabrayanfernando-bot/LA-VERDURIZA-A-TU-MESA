@@ -258,7 +258,6 @@ Si la ubicación no es correcta, selecciona manualmente:
 <button onclick="sendWhatsApp()">Confirmar pedido</button>
 
 </div>
-</div>
 
 <script>
 const products = [
@@ -286,7 +285,25 @@ let total = 0;
 let userCoords = "";
 let map, marker;
 
-const container = document.getElementById("products");
+let container;
+
+window.onload = () => {
+  container = document.getElementById("products");
+
+  renderProducts("Todos");
+
+  // activar botones
+  document.querySelectorAll(".cat-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const category = btn.getAttribute("data-cat");
+
+      renderProducts(category);
+
+      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+};
 
 /* 🔥 RENDER PRODUCTOS */
 function renderProducts(filter = "Todos") {
