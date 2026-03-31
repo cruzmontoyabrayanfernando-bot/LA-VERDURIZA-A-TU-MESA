@@ -169,6 +169,30 @@
                 justify-content: center;
             }
         }
+    /* CATEGORÍAS nuevas agregadas */
+.categories {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.categories button {
+    min-width: max-content;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
+
+.categories button.active {
+    background: #2e7d32;
+    color: white;
+}
     </style>
 </head>
 
@@ -180,6 +204,7 @@
 </header>
 
 <div class="container">
+    <div class="categories" id="categories"></div> <!-- categorias -->
     <h2>Productos</h2>
     <div class="grid" id="products"></div>
 </div>
@@ -239,19 +264,20 @@
     </div>
 
 <script>
-    const products = [
-        { name: "Guineo", price: 20, img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
-        { name: "Plátano", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
-        { name: "Naranja", price: 27, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" },
-        { name: "Tomate", price: 42, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
-        { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
-        { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
-        { name: "Aguacate", price: 60, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
-        { name: "Chayote", price: 27, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
-        { name: "Piña", price: 22, img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },
-        { name: "Coco", price: 20, img: "https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/virgilio07/AKqdQ8xrAATCdxfb8DZYDby56EgKbdFArxK1tK9PyNpjfvTVRGq2dSy8BMmFufA.gif" }
-    ];
+  const products = [
+    { name: "Guineo", price: 20, category: "Frutas", img: "..." },
+    { name: "Plátano", price: 22, category: "Frutas", img: "..." },
+    { name: "Naranja", price: 27, category: "Frutas", img: "..." },
 
+    { name: "Tomate", price: 42, category: "Verduras", img: "..." },
+    { name: "Cebolla", price: 20, category: "Verduras", img: "..." },
+    { name: "Zanahoria", price: 22, category: "Verduras", img: "..." },
+    { name: "Chayote", price: 27, category: "Verduras", img: "..." },
+
+    { name: "Aguacate", price: 60, category: "Abarrotes", img: "..." },
+    { name: "Piña", price: 22, category: "Frutas", img: "..." },
+    { name: "Coco", price: 20, category: "Semillas", img: "..." }
+];
     let cart = [];
     let total = 0;
 
@@ -260,8 +286,39 @@
     let map, marker;
 
     const container = document.getElementById("products");
+/*agregado antes*/
+    const categories = ["Todos", "Verduras", "Chiles", "Semillas", "Abarrotes"];
+
+let currentCategory = "Todos";
+
+const categoriesContainer = document.getElementById("categories");
+
+categories.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.innerText = cat;
+
+    if (cat === "Todos") btn.classList.add("active");
+
+    btn.onclick = () => {
+        currentCategory = cat;
+
+        document.querySelectorAll(".categories button")
+            .forEach(b => b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        renderProducts();
+    };
+
+    categoriesContainer.appendChild(btn);
+});
+   function renderProducts() {
+    container.innerHTML = "";
 
     products.forEach((p, i) => {
+
+        if (currentCategory !== "Todos" && p.category !== currentCategory) return;
+
         const div = document.createElement("div");
         div.className = "card";
 
@@ -275,7 +332,11 @@
 
         container.appendChild(div);
     });
+}
+renderProducts();
 
+    /*fin de ccodigo nuevo*/
+    
     function addToCart(i) {
         const qty = document.getElementById(`qty${i}`).value;
         if (qty <= 0) return;
