@@ -46,12 +46,15 @@
             text-align: center;
         }
 
-        .product-img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    aspect-ratio: 1/1;
+      .product-img {
+  width: 90%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
+
+
 
         /* INPUTS */
         input, textarea, select {
