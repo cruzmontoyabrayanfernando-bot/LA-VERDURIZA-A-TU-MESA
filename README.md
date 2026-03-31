@@ -265,7 +265,7 @@
 
 <script>
   const products = [
-    { name: "Guineo", price: 20, category: "Frutas", img: "..." },
+    { name: "Guineo", price: 20, category: "Frutas", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRje6yTkMzYgIo3uvkDCzLDeqlMPLEF1W5caw&s" },
     { name: "Plátano", price: 22, category: "Frutas", img: "..." },
     { name: "Naranja", price: 27, category: "Frutas", img: "..." },
 
