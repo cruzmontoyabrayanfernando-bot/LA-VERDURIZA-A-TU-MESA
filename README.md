@@ -318,8 +318,6 @@ button:hover { background: #2e7d32; }
 
   }
 
-}
-
 </style>
 
 </head>
@@ -357,11 +355,8 @@ button:hover { background: #2e7d32; }
   <img src="https://img.pikbest.com/png-images/20240926/png-of-supermarket-shopping-cart-filled-with-groceries-e2-80-93transparent-background_10889722.png!bw700">
 
   <div>
-
-    <span>Carrito</span>
-
-    <p>$<span id="total">0</span></p>
-
+  <span>Carrito</span>
+  <p>$<span id="total">0</span></p>
   </div>
 
 </div>
@@ -455,11 +450,6 @@ Si la ubicación no es correcta, selecciona manualmente:
 
 
 <button onclick="sendWhatsApp()">Confirmar pedido</button>
-
-
-
-</div>
-
 </div>
 
 
@@ -696,7 +686,8 @@ function getLocation() {
 
         userCoords = lat + "," + lng;
 
-        // 👉 MOVER MAPA A LA UBICACIÓN DEL USUARIO
+        
+        /* 👉 MOVER MAPA A LA UBICACIÓN DEL USUARIO*/
 
 if (map) {
 
@@ -721,9 +712,7 @@ if (map) {
         document.getElementById("address").value = Ubicación GPS: ${lat}, ${lng};
 
 
-
         try {
-
           const response = await fetch(https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng});
 
           const data = await response.json();
