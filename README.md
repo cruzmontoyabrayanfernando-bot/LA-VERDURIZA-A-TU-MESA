@@ -275,7 +275,7 @@
     { name: "Chayote", price: 27, category: "Verduras", img: "..." },
 
     { name: "Aguacate", price: 60, category: "Abarrotes", img: "..." },
-    { name: "Piña", price: 22, category: "Chiles", img: "..." },
+    { name: "Chile huajillo", price: 22, category: "Chiles", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg2IULLonAKrnWtVO0vQNqjOUOkj0v-QhYFQ&s" },
     { name: "Coco", price: 20, category: "Semillas", img: "..." }
 ];
     let cart = [];
