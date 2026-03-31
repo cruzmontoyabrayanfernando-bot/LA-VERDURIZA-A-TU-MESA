@@ -24,16 +24,6 @@ header {
   border-bottom: 2px solid #ddd;
 }
 
-/* Scroll bonito */
-.categories-bar::-webkit-scrollbar {
-  height: 6px;
-}
-.categories-bar::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-
-/* BOTONES */
 .cat-btn {
   background: transparent;
   border: none;
@@ -43,18 +33,12 @@ header {
   font-weight: bold;
   color: #555;
   border-bottom: 3px solid transparent;
-  transition: 0.2s;
 }
 
-/* Hover */
-.cat-btn:hover {
-  color: #2e7d32;
-}
-
-/* ACTIVO (tipo GitHub) */
 .cat-btn.active {
-  color:#2e7d32 ;
+  color: #2e7d32;
   border-bottom: 3px solid #2e7d32;
+}
 }/*FIN DE CODIGO CCS/*
 /* CONTENEDOR RESPONSIVE */
 .container {
@@ -210,11 +194,11 @@ button:hover { background: #2e7d32; }
 <h2>Categorías</h2>
 
 <div id="categories" class="categories-bar">
-<button class="cat-btn active" onclick="filterProducts('Todos', this)">Todos</button>
-  <button class="cat-btn" onclick="filterProducts('Verduras', this)">Verduras</button>
-  <button class="cat-btn" onclick="filterProducts('Abarrotes', this)">Abarrotes</button>
-  <button class="cat-btn" onclick="filterProducts('Chiles', this)">Chiles</button>
-  <button class="cat-btn" onclick="filterProducts('Semillas', this)">Semillas</button>
+<button class="cat-btn active" data-cat="Todos">Todos</button>
+<button class="cat-btn" data-cat="Verduras">Verduras</button>
+<button class="cat-btn" data-cat="Abarrotes">Abarrotes</button>
+<button class="cat-btn" data-cat="Chiles">Chiles</button>
+<button class="cat-btn" data-cat="Semillas">Semillas</button>
 </div>
 <h2>Productos</h2>
 <div class="grid" id="products"></div>
@@ -577,6 +561,22 @@ function sendWhatsApp() {
     document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
   });
 }
+  // ACTIVAR BOTONES DE CATEGORÍA
+document.querySelectorAll(".cat-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const category = btn.getAttribute("data-cat");
+
+    renderProducts(category);
+
+    document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
+
+// CARGA INICIAL
+window.onload = () => {
+  renderProducts("Todos");
+};
 </script>
 
 </body>
