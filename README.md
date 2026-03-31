@@ -47,12 +47,14 @@
 
         /* TARJETAS */
         .card {
+            width: 100%;
+    max-width: 180px;
+    margin: auto;
     background: white;
     padding: 12px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     text-align: center;
-    width: 160px;
 }
 
      .product-img {
