@@ -269,9 +269,9 @@ const products = [
   { name: "Tomate", price: 42, category: "Verduras", img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
   { name: "Cebolla", price: 20, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
   { name: "Zanahoria", price: 22, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
-  { name: "Aguacate", price: 60, category: "Verduras", img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
+  { name: "Aguacate", price: 60, category: "Verduras", img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp" },
   { name: "Chayote", price: 27, category: "Verduras", img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
-  { name: "Piña", price: 22, category: "Verduras", img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },  
+  { name: "Piña", price: 22, category: "Verduras", img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },
 
   { name: "Arroz", price: 30, category: "Abarrotes", img: "https://cdn.pixabay.com/photo/2017/01/20/15/06/rice-1995074_1280.jpg" },
   { name: "Frijol", price: 35, category: "Abarrotes", img: "https://cdn.pixabay.com/photo/2016/03/05/19/02/beans-1238658_1280.jpg" },
@@ -281,14 +281,15 @@ const products = [
 
   { name: "Semillas de Girasol", price: 25, category: "Semillas", img: "https://cdn.pixabay.com/photo/2016/08/09/15/02/sunflower-1584582_1280.jpg" }
 ];
+
 let cart = [];
 let total = 0;
-
-/* 🔥 VARIABLE GLOBAL PARA UBICACIÓN */
 let userCoords = "";
 let map, marker;
+
 const container = document.getElementById("products");
 
+/* 🔥 RENDER PRODUCTOS */
 function renderProducts(filter = "Todos") {
   container.innerHTML = "";
 
@@ -309,38 +310,41 @@ function renderProducts(filter = "Todos") {
     container.appendChild(div);
   });
 }
-  function filterProducts(category, btn) {
-  renderProducts(category);
 
-  // quitar activo a todos
-  document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+/* 🛒 CARRITO */
+function addToCart(i) {
+  const qty = document.getElementById(`qty${i}`).value;
+  if (qty <= 0) return;
 
-  // activar botón correcto (por texto, más seguro)
-  document.querySelectorAll(".cat-btn").forEach(b => {
-    if (b.innerText === category) {
-      b.classList.add("active");
-    }
+  const product = products[i];
+  const subtotal = product.price * qty;
+
+  cart.push({ name: product.name, qty, subtotal });
+
+  total += subtotal;
+  updateTotal();
+}
+
+function updateTotal() {
+  document.getElementById("total").innerText = total;
+}
+
+/* 🎯 BOTONES DE CATEGORÍA (ÚNICO MÉTODO) */
+document.querySelectorAll(".cat-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const category = btn.getAttribute("data-cat");
+
+    renderProducts(category);
+
+    document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
   });
-}
+});
 
-  // asegurar que el botón "Todos" esté activo
-  const firstBtn = document.querySelector(".cat-btn");
-  if (firstBtn) firstBtn.classList.add("active");
-};
-    function filterProducts(category, btn = null) {
-  renderProducts(category);
-
-  document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
-
-  if (btn) btn.classList.add("active");
-}
-
-  // quitar activo a todos
-  document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
-
-  // activar el seleccionado
-  btn.classList.add("active");
-}
+/* 🚀 INICIO */
+window.onload = () => {
+  renderProducts("Todos");
+};/*termina el codigo nuevo agregad*/
 function addToCart(i) {
   const qty = document.getElementById(`qty${i}`).value;
   if (qty <= 0) return;
@@ -560,23 +564,6 @@ function sendWhatsApp() {
 
     document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
   });
-}
-  // ACTIVAR BOTONES DE CATEGORÍA
-document.querySelectorAll(".cat-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const category = btn.getAttribute("data-cat");
-
-    renderProducts(category);
-
-    document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-  });
-});
-
-// CARGA INICIAL
-window.onload = () => {
-  renderProducts("Todos");
-};
 </script>
 
 </body>
