@@ -334,6 +334,13 @@ renderProducts();/*corregido p*/
   const firstBtn = document.querySelector(".cat-btn");
   if (firstBtn) firstBtn.classList.add("active");
 };
+    function filterProducts(category, btn = null) {
+  renderProducts(category);
+
+  document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+
+  if (btn) btn.classList.add("active");
+}
 
   // quitar activo a todos
   document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
