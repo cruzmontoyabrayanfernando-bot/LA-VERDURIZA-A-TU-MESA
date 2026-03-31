@@ -170,6 +170,14 @@ button:hover { background: #2e7d32; }
 </header>
 
 <div class="container">
+<h2>Categorías</h2>
+<div id="categories" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
+  <button onclick="filterProducts('Todos')">Todos</button>
+  <button onclick="filterProducts('Verduras')">Verduras</button>
+  <button onclick="filterProducts('Abarrotes')">Abarrotes</button>
+  <button onclick="filterProducts('Chiles')">Chiles</button>
+  <button onclick="filterProducts('Semillas')">Semillas</button>
+</div>  
 <h2>Productos</h2>
 <div class="grid" id="products"></div>
 </div>
@@ -233,18 +241,24 @@ Si la ubicación no es correcta, selecciona manualmente:
 
 <script>
 const products = [
-  { name: "Guineo", price: 20, img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
-  { name: "Plátano", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
-  { name: "Naranja", price: 27, img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" },
-  { name: "Tomate", price: 42, img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
-  { name: "Cebolla", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
-  { name: "Zanahoria", price: 22, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
-  { name: "Aguacate", price: 60, img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
-  { name: "Chayote", price: 27, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
-  { name: "Piña", price: 22, img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },  
-  { name: "Coco", price: 20, img: "https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/virgilio07/AKqdQ8xrAATCdxfb8DZYDby56EgKbdFArxK1tK9PyNpjfvTVRGq2dSy8BMmFufA.gif" }
-];
+  { name: "Guineo", price: 20, category: "Verduras", img: "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/1/106401731.jpg" },
+  { name: "Plátano", price: 22, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
+  { name: "Naranja", price: 27, category: "Verduras", img: "https://frutas.consumer.es/sites/frutas/files/styles/pagina_cabecera_desktop/public/2025-04/naranja.webp" },
+  { name: "Tomate", price: 42, category: "Verduras", img: "https://agrichem.mx/wp-content/uploads/2017/02/tomate2.jpg" },
+  { name: "Cebolla", price: 20, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoN9386WFngYKhLQG9mSOTqumjeVJs6Ckkw&s" },
+  { name: "Zanahoria", price: 22, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQ4D1t2mJA1i6sQC2hghLKu-Bzn_FXZ9v4Q&s" },
+  { name: "Aguacate", price: 60, category: "Verduras", img: "https://freshify.com.mx/cdn/shop/files/Aguacate_Extra.webp?v=1744306574&width=1946" },
+  { name: "Chayote", price: 27, category: "Verduras", img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
+  { name: "Piña", price: 22, category: "Verduras", img: "https://www.gob.mx/cms/uploads/article/main_image/75312/pi_a.jpg" },  
 
+  { name: "Arroz", price: 30, category: "Abarrotes", img: "https://cdn.pixabay.com/photo/2017/01/20/15/06/rice-1995074_1280.jpg" },
+  { name: "Frijol", price: 35, category: "Abarrotes", img: "https://cdn.pixabay.com/photo/2016/03/05/19/02/beans-1238658_1280.jpg" },
+
+  { name: "Chile Jalapeño", price: 28, category: "Chiles", img: "https://cdn.pixabay.com/photo/2016/03/05/19/02/chili-1238657_1280.jpg" },
+  { name: "Chile Seco", price: 40, category: "Chiles", img: "https://cdn.pixabay.com/photo/2017/09/02/13/36/chili-2706646_1280.jpg" },
+
+  { name: "Semillas de Girasol", price: 25, category: "Semillas", img: "https://cdn.pixabay.com/photo/2016/08/09/15/02/sunflower-1584582_1280.jpg" }
+];
 let cart = [];
 let total = 0;
 
@@ -253,20 +267,30 @@ let userCoords = "";
 let map, marker;
 const container = document.getElementById("products");
 
-products.forEach((p, i) => {
-  const div = document.createElement("div");
-  div.className = "card";
+function renderProducts(filter = "Todos") {
+  container.innerHTML = "";
 
-  div.innerHTML = `
-    <img src="${p.img}" class="product-img">
-    <h3>${p.name}</h3>
-    <p>$${p.price} / kg</p>
-    <input type="number" id="qty${i}" min="1" value="1"> kg
-    <button onclick="addToCart(${i})">Agregar</button>
-  `;
+  products.forEach((p, i) => {
+    if (filter !== "Todos" && p.category !== filter) return;
 
-  container.appendChild(div);
-});
+    const div = document.createElement("div");
+    div.className = "card";
+
+    div.innerHTML = `
+      <img src="${p.img}" class="product-img">
+      <h3>${p.name}</h3>
+      <p>$${p.price} / kg</p>
+      <input type="number" id="qty${i}" min="1" value="1"> kg
+      <button onclick="addToCart(${i})">Agregar</button>
+    `;
+
+    container.appendChild(div);
+  });
+}
+  function filterProducts(category) {
+  renderProducts(category);
+}
+  renderProducts();
 
 function addToCart(i) {
   const qty = document.getElementById(`qty${i}`).value;
