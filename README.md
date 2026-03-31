@@ -570,7 +570,6 @@ renderProducts();
 
             document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
         });
-    }
 </script>
 </body>
 </html>
