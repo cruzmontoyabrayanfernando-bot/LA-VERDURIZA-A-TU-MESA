@@ -210,7 +210,7 @@ button:hover { background: #2e7d32; }
 <h2>Categorías</h2>
 
 <div id="categories" class="categories-bar">
-  <button class="cat-btn active" onclick="filterProducts('Todos', this)">Todos</button>
+<button class="cat-btn active" onclick="filterProducts('Todos', this)">Todos</button>
   <button class="cat-btn" onclick="filterProducts('Verduras', this)">Verduras</button>
   <button class="cat-btn" onclick="filterProducts('Abarrotes', this)">Abarrotes</button>
   <button class="cat-btn" onclick="filterProducts('Chiles', this)">Chiles</button>
@@ -327,6 +327,13 @@ function renderProducts(filter = "Todos") {
 }
   function filterProducts(category, btn) {
 renderProducts();/*corregido p*/
+    window.onload = () => {
+  renderProducts("Todos");
+
+  // asegurar que el botón "Todos" esté activo
+  const firstBtn = document.querySelector(".cat-btn");
+  if (firstBtn) firstBtn.classList.add("active");
+};
 
   // quitar activo a todos
   document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
