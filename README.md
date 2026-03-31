@@ -48,7 +48,7 @@ header {
 
 /* Hover */
 .cat-btn:hover {
-  color: #2e7d32;
+  color: ffffff;
 }
 
 /* ACTIVO (tipo GitHub) */
