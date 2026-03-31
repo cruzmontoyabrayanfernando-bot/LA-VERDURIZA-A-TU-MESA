@@ -572,6 +572,5 @@ renderProducts();
         });
     }
 </script>
-
 </body>
 </html>
