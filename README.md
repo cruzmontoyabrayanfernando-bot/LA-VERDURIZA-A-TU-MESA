@@ -129,17 +129,19 @@
 
         /* MODAL */
         #modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            justify-content: center;
-            align-items: center;
-        }
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
 
+    justify-content: center;
+    align-items: flex-start; /* 🔥 CAMBIO CLAVE */
+    overflow-y: auto;        /* 🔥 permite scroll */
+    padding: 20px 10px;
+}
         .modal-content {
             background: white;
             padding: 20px;
@@ -570,6 +572,7 @@ renderProducts();
 
             document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
         });
+    }
 </script>
 </body>
 </html>
