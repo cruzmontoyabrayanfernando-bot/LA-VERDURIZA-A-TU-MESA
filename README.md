@@ -326,7 +326,7 @@ function renderProducts(filter = "Todos") {
   });
 }
   function filterProducts(category, btn) {
-  renderProducts(category);
+renderProducts();/*corregido p*/
 
   // quitar activo a todos
   document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
