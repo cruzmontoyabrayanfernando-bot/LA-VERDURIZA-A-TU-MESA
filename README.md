@@ -326,9 +326,18 @@ function renderProducts(filter = "Todos") {
   });
 }
   function filterProducts(category, btn) {
-renderProducts();/*corregido p*/
-    window.onload = () => {
-  renderProducts("Todos");
+  renderProducts(category);
+
+  // quitar activo a todos
+  document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+
+  // activar botón correcto (por texto, más seguro)
+  document.querySelectorAll(".cat-btn").forEach(b => {
+    if (b.innerText === category) {
+      b.classList.add("active");
+    }
+  });
+}
 
   // asegurar que el botón "Todos" esté activo
   const firstBtn = document.querySelector(".cat-btn");
