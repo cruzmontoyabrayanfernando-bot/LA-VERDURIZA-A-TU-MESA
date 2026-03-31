@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -6,10 +6,10 @@
     <title>La Verduriza</title>
 
     <!-- 🔥 LEAFLET -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-    <style>
+    
+<style>
         body {
             font-family: Arial;
             margin: 0;
@@ -198,47 +198,45 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">X</span>
 
-        <h2>🧾 Tu pedido</h2>
-        <div id="cartList"></div>
+  <h2>🧾 Tu pedido</h2>
+ <div id="cartList"></div>
 
-        <hr>
+<hr>
 
-        <h3>Datos de entrega</h3>
+<h3>Datos de entrega</h3>
 
-        <label>Nombre:</label>
+<label>Nombre:</label>
         <input type="text" id="name">
 
-        <label>Dirección:</label>
+<label>Dirección:</label>
         <input type="text" id="address" placeholder="Escribe tu dirección o usa ubicación">
 
-        <button onclick="getLocation()">📍 Usar mi ubicación actual</button>
+<button onclick="getLocation()">📍 Usar mi ubicación actual</button>
 
-        <small style="color:gray;">
+<small style="color:gray;">
             Si la ubicación no es correcta, selecciona manualmente:
         </small>
 
-        <div id="map" style="height:250px; border-radius:10px; margin-top:10px;"></div>
+ <div id="map" style="height:250px; border-radius:10px; margin-top:10px;"></div>
 
-        <label>Referencias:</label>
+   <label>Referencias:</label>
         <textarea id="references"></textarea>
 
-        <label>Método de pago:</label>
+  <label>Método de pago:</label>
         <select id="payment">
             <option value="Efectivo">Efectivo</option>
             <option value="Transferencia">Transferencia</option>
         </select>
 
-        <label>¿Con cuánto paga?</label>
+<label>¿Con cuánto paga?</label>
         <input type="number" id="cash" oninput="calculateChange()">
+<p id="changeText"></p>
 
-        <p id="changeText"></p>
-
-        <label>¿No encontraste lo que buscas?</label>
+ <label>¿No encontraste lo que buscas?</label>
         <textarea id="extra"></textarea>
 
-        <button onclick="sendWhatsApp()">Confirmar pedido</button>
+<button onclick="sendWhatsApp()">Confirmar pedido</button>
     </div>
-</div>
 
 <script>
     const products = [
