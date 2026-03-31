@@ -277,7 +277,10 @@
     { name: "Chayote", price: 27, category: "Verduras", img: "..." },
 
     { name: "Aguacate", price: 60, category: "Abarrotes", img: "..." },
+      
     { name: "Chile huajillo", price: 22, category: "Chiles", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg2IULLonAKrnWtVO0vQNqjOUOkj0v-QhYFQ&s" },
+{ name: "Chile ancho", price: 22, category: "Chiles", img: "[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg2IULLonAKrnWtVO0vQNqjOUOkj0v-QhYFQ&s](https://lamejicana.mx/cdn/shop/products/Chileancho_460x@2x.jpg?v=1596394690)" },
+      
     { name: "Coco", price: 20, category: "Semillas", img: "..." }
 ];
     let cart = [];
