@@ -48,12 +48,12 @@ header {
 
 /* Hover */
 .cat-btn:hover {
-  color: ffffff;
+  color: #2e7d32;
 }
 
 /* ACTIVO (tipo GitHub) */
 .cat-btn.active {
-  color: #2e7d32;
+  color: #ffffff ;
   border-bottom: 3px solid #2e7d32;
 }/*FIN DE CODIGO CCS/*
 /* CONTENEDOR RESPONSIVE */
