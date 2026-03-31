@@ -16,7 +16,46 @@ header {
   padding: 10px;
   text-align: center;
 }
+.categories-bar {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+}
 
+/* Scroll bonito */
+.categories-bar::-webkit-scrollbar {
+  height: 6px;
+}
+.categories-bar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* BOTONES */
+.cat-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: bold;
+  color: #555;
+  border-bottom: 3px solid transparent;
+  transition: 0.2s;
+}
+
+/* Hover */
+.cat-btn:hover {
+  color: #2e7d32;
+}
+
+/* ACTIVO (tipo GitHub) */
+.cat-btn.active {
+  color: #2e7d32;
+  border-bottom: 3px solid #2e7d32;
+}/*FIN DE CODIGO CCS/*
 /* CONTENEDOR RESPONSIVE */
 .container {
   padding: 20px;
@@ -169,15 +208,17 @@ button:hover { background: #2e7d32; }
 <p>FRUTAS Y VERDURAS FRESCAS HASTA LA PUERTA DE TU CASA</p>
 </header>
 
-<div class="container">
 <h2>Categorías</h2>
-<div id="categories" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
-  <button onclick="filterProducts('Todos')">Todos</button>
-  <button onclick="filterProducts('Verduras')">Verduras</button>
-  <button onclick="filterProducts('Abarrotes')">Abarrotes</button>
-  <button onclick="filterProducts('Chiles')">Chiles</button>
-  <button onclick="filterProducts('Semillas')">Semillas</button>
-</div>  
+
+<h2>Categorías</h2>
+
+<div id="categories" class="categories-bar">
+  <button class="cat-btn active" onclick="filterProducts('Todos', this)">Todos</button>
+  <button class="cat-btn" onclick="filterProducts('Verduras', this)">Verduras</button>
+  <button class="cat-btn" onclick="filterProducts('Abarrotes', this)">Abarrotes</button>
+  <button class="cat-btn" onclick="filterProducts('Chiles', this)">Chiles</button>
+  <button class="cat-btn" onclick="filterProducts('Semillas', this)">Semillas</button>
+</div>
 <h2>Productos</h2>
 <div class="grid" id="products"></div>
 </div>
@@ -287,11 +328,15 @@ function renderProducts(filter = "Todos") {
     container.appendChild(div);
   });
 }
-  function filterProducts(category) {
+  function filterProducts(category, btn) {
   renderProducts(category);
-}
-  renderProducts();
 
+  // quitar activo a todos
+  document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+
+  // activar el seleccionado
+  btn.classList.add("active");
+}
 function addToCart(i) {
   const qty = document.getElementById(`qty${i}`).value;
   if (qty <= 0) return;
