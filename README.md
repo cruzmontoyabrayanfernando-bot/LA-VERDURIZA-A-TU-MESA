@@ -31,12 +31,12 @@
         }
 
         /* GRID RESPONSIVE */
-        grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 160px));
-    justify-content: center;
-    gap: 14px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
 }
+
         /* TARJETAS */
         .card {
             background: white;
