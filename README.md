@@ -207,9 +207,6 @@ button:hover { background: #2e7d32; }
 <h1>LA VERDURIZA</h1>
 <p>FRUTAS Y VERDURAS FRESCAS HASTA LA PUERTA DE TU CASA</p>
 </header>
-
-<h2>Categorías</h2>
-
 <h2>Categorías</h2>
 
 <div id="categories" class="categories-bar">
@@ -221,7 +218,7 @@ button:hover { background: #2e7d32; }
 </div>
 <h2>Productos</h2>
 <div class="grid" id="products"></div>
-</div>
+
 
 <!-- CARRITO -->
 <div id="cartBox" onclick="openModal()">
