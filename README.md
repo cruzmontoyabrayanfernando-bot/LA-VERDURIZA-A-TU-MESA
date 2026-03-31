@@ -53,7 +53,7 @@ header {
 
 /* ACTIVO (tipo GitHub) */
 .cat-btn.active {
-  color: #ffffff ;
+  color:#2e7d32 ;
   border-bottom: 3px solid #2e7d32;
 }/*FIN DE CODIGO CCS/*
 /* CONTENEDOR RESPONSIVE */
