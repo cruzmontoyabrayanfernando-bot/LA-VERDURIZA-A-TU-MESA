@@ -292,17 +292,17 @@
     { name: "Naranja", price: 27, category: "Frutas",stock: 10,img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS12-VjkK6CVWxTgVKG8sYTAi1bIreKSoq91A&s" },
  { name: "Coco", price: 20, category: "Frutas", stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQju63CeIPz4uWMp7p02htw6OvhF-ysYLp_KA&s" },
       
-    { name: "Tomate", price: 42, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZCXxDyXhL2MDRrGS8h5re1vNdYwqa9DvuHg&s" },
-    { name: "Cebolla", price: 20, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpaPFC4FDPXwEILsvsr7H0s9g5ly56_NrWQg&s" },
-    { name: "Zanahoria", price: 22, category: "Verduras", img: "https://www.agrorganicos.mx/cdn/shop/products/zanahoria_1080x.jpg?v=1556947271" },
-    { name: "Chayote", price: 27, category: "Verduras", img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
+    { name: "Tomate", price: 42, category: "Verduras",stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZCXxDyXhL2MDRrGS8h5re1vNdYwqa9DvuHg&s" },
+    { name: "Cebolla", price: 20, category: "Verduras",stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpaPFC4FDPXwEILsvsr7H0s9g5ly56_NrWQg&s" },
+    { name: "Zanahoria", price: 22, category: "Verduras",stock: 10, img: "https://www.agrorganicos.mx/cdn/shop/products/zanahoria_1080x.jpg?v=1556947271" },
+    { name: "Chayote", price: 27, category: "Verduras",stock: 10, img: "https://www.centralenlinea.com/images/thumbs/002/0026729_chayote-verde-oscuro-sin-espinas_550.png" },
 
-    { name: "ACEITE PATRONA", price: 35, category: "Abarrotes", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3cXSoUdYY8Zt4Jq95Yl-o7Na9DUN8d8yq5g&s" },
+    { name: "ACEITE PATRONA", price: 35, category: "Abarrotes",stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3cXSoUdYY8Zt4Jq95Yl-o7Na9DUN8d8yq5g&s" },
       
-    { name: "Chile huajillo", price: 22, category: "Chiles", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg2IULLonAKrnWtVO0vQNqjOUOkj0v-QhYFQ&s" },
-{ name: "Chile ancho", price: 22, category: "Chiles", img: "https://lamejicana.mx/cdn/shop/products/Chileancho_720x.jpg?v=1596394690" },
+    { name: "Chile huajillo", price: 22, category: "Chiles",stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg2IULLonAKrnWtVO0vQNqjOUOkj0v-QhYFQ&s" },
+{ name: "Chile ancho", price: 22, category: "Chiles",stock: 10, img: "https://lamejicana.mx/cdn/shop/products/Chileancho_720x.jpg?v=1596394690" },
       
-      { name: "NUEZ", price: 50, category: "Semillas", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7jLdARVZ2CLeVty0j-6gS6TA4YNXc6EZiNA&s" }
+      { name: "NUEZ", price: 50, category: "Semillas",stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7jLdARVZ2CLeVty0j-6gS6TA4YNXc6EZiNA&s" }
 ];
     let cart = [];
     let total = 0;
@@ -620,6 +620,7 @@ localStorage.setItem("ultimoPedido", JSON.stringify(cart));
 
     document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
 });
+}
 
 </script>
 </body>
