@@ -268,6 +268,12 @@
             <option value="Efectivo">Efectivo</option>
             <option value="Transferencia">Transferencia</option>
         </select>
+        <label>Horario de entrega:</label>
+<select id="schedule">
+    <option>Lo antes posible</option>
+    <option>Hoy en la tarde</option>
+    <option>Mañana</option>
+</select>
 
 <label>¿Con cuánto paga?</label>
         <input type="number" id="cash" oninput="calculateChange()">
@@ -281,10 +287,10 @@
 
 <script>
   const products = [
-    { name: "Guineo", price: 20, category: "Frutas", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRje6yTkMzYgIo3uvkDCzLDeqlMPLEF1W5caw&s" },
-    { name: "Plátano", price: 22, category: "Frutas", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
-    { name: "Naranja", price: 27, category: "Frutas", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS12-VjkK6CVWxTgVKG8sYTAi1bIreKSoq91A&s" },
- { name: "Coco", price: 20, category: "Frutas", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQju63CeIPz4uWMp7p02htw6OvhF-ysYLp_KA&s" },
+    { name: "Guineo", price: 20, category: "Frutas", stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRje6yTkMzYgIo3uvkDCzLDeqlMPLEF1W5caw&s" },
+    { name: "Plátano", price: 22, category: "Frutas", stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndFDmfikZJMF6qeCEWuGVPmkTY0z76rLtgg&s" },
+    { name: "Naranja", price: 27, category: "Frutas",stock: 10,img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS12-VjkK6CVWxTgVKG8sYTAi1bIreKSoq91A&s" },
+ { name: "Coco", price: 20, category: "Frutas", stock: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQju63CeIPz4uWMp7p02htw6OvhF-ysYLp_KA&s" },
       
     { name: "Tomate", price: 42, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZCXxDyXhL2MDRrGS8h5re1vNdYwqa9DvuHg&s" },
     { name: "Cebolla", price: 20, category: "Verduras", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpaPFC4FDPXwEILsvsr7H0s9g5ly56_NrWQg&s" },
@@ -300,14 +306,21 @@
 ];
     let cart = [];
     let total = 0;
+    let envio = 0; /* 🔥 agregado */
+let totalFinal = 0;
 
     /* 🔥 VARIABLE GLOBAL PARA UBICACIÓN */
     let userCoords = "";
     let map, marker;
-
+    
+const zonas = [
+    { nombre: "Centro", lat: 16.75, lng: -93.12, radio: 3, costo: 20 },
+    { nombre: "Periferia", lat: 16.75, lng: -93.12, radio: 6, costo: 30 }
+]; /* 🔥 VARIABLE GLOBAL agregada */
+    
     const container = document.getElementById("products");
 /*agregado antes*/
-    const categories = ["Todos", "Verduras", "Chiles", "Semillas", "Abarrotes"];
+    const categories = ["Todos", "Verduras","Frutas", "Chiles", "Semillas", "Abarrotes"];
 
 let currentCategory = "Todos";
 
@@ -362,6 +375,11 @@ renderProducts();
         if (qty <= 0) return;
 
         const product = products[i];
+        if (qty > product.stock) {
+    alert("No hay suficiente stock");
+    return;
+}
+        
         const subtotal = product.price * qty;
 
         cart.push({
@@ -374,9 +392,10 @@ renderProducts();
         updateTotal();
     }
 
-    function updateTotal() {
-        document.getElementById("total").innerText = total;
-    }
+   function updateTotal() {
+    totalFinal = total + envio;
+    document.getElementById("total").innerText = totalFinal;
+}
 
     function removeFromCart(index) {
         total -= cart[index].subtotal;
@@ -438,6 +457,8 @@ renderProducts();
                     const lng = position.coords.longitude;
 
                     userCoords = lat + "," + lng;
+                    calcularEnvio(lat, lng);
+updateTotal();
 
                     if (map) {
                         map.setView([lat, lng], 16);
@@ -477,6 +498,23 @@ renderProducts();
             alert("Tu navegador no soporta ubicación");
         }
     }
+    /*funcion nueva*/
+    function calcularEnvio(lat, lng) {
+    envio = 40; // default (lejos)
+
+    zonas.forEach(z => {
+        const distancia = Math.sqrt(
+            Math.pow(lat - z.lat, 2) + Math.pow(lng - z.lng, 2)
+        );
+
+        if (distancia <= z.radio) {
+            envio = z.costo;
+        }
+    });
+
+    totalFinal = total + envio;
+}
+    
 
     function calculateChange() {
         const cash = parseFloat(document.getElementById("cash").value) || 0;
@@ -496,7 +534,9 @@ renderProducts();
             changeText.innerText = `Faltan: $${falta}`;
             changeText.style.color = "red";
         }
+        
     }
+    
 
     function sendWhatsApp() {
         const name = document.getElementById("name").value.trim();
@@ -543,17 +583,20 @@ renderProducts();
         if (extra) {
             message += `%0A❓ También busco:%0A${extra}%0A`;
         }
-
-        message += `%0ATotal: $${total}`;
+const schedule = document.getElementById("schedule").value;
+message += `⏰ Entrega: ${schedule}%0A`;
+        
+message += `🚚 Envío: $${envio}%0A`;
+message += `💵 Total final: $${totalFinal}`;
 
         const phone = "5219613267670";
         const url = `https://wa.me/${phone}?text=${message}`;
-
+localStorage.setItem("ultimoPedido", JSON.stringify(cart));
         window.open(url, "_blank");
     }
 
     function initMap() {
-        map = L.map('map').setView([20.5888, -100.3899], 13);
+        map = L.map('map').setView([16.75, -93.12], 13); // Tuxtla aprox
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap'
@@ -573,6 +616,9 @@ renderProducts();
 
             document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
         });
+        /* 🔥 AL FINAL DE TODO */
+const ultimo = JSON.parse(localStorage.getItem("ultimoPedido"));
+console.log(ultimo);
     }
 </script>
 </body>
