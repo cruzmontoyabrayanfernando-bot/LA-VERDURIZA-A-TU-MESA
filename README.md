@@ -525,8 +525,8 @@ updateTotal();
             return;
         }
 
-        if (cash >= total) {
-            const cambio = cash - total;
+       if (cash >= totalFinal) {
+            const cambio = cash - totalFinal;
             changeText.innerText = `Cambio: $${cambio}`;
             changeText.style.color = "green";
         } else {
@@ -603,23 +603,24 @@ localStorage.setItem("ultimoPedido", JSON.stringify(cart));
         }).addTo(map);
 
         map.on('click', function(e) {
-            const lat = e.latlng.lat;
-            const lng = e.latlng.lng;
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
 
-            userCoords = lat + "," + lng;
+    userCoords = lat + "," + lng;
 
-            if (marker) {
-                map.removeLayer(marker);
-            }
+    /* 🔥 AQUÍ VA */
+    calcularEnvio(lat, lng);
+    updateTotal();
 
-            marker = L.marker([lat, lng]).addTo(map);
-
-            document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
-        });
-        /* 🔥 AL FINAL DE TODO */
-const ultimo = JSON.parse(localStorage.getItem("ultimoPedido"));
-console.log(ultimo);
+    if (marker) {
+        map.removeLayer(marker);
     }
+
+    marker = L.marker([lat, lng]).addTo(map);
+
+    document.getElementById("address").value = `Ubicación seleccionada: ${lat}, ${lng}`;
+});
+
 </script>
 </body>
 </html>
