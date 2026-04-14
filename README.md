@@ -502,7 +502,7 @@ if (userCoords) {
     [lat, lng] = userCoords.split(",");
 }
 // ⚠️ cambia por tu dominio real
-const link = `https://TU_DOMINIO/index.html?seguimiento=1&lat=${lat}&lng=${lng}`;
+const link = `https://cruzmontoyabrayanfernando-bot.github.io/LA-VERDURIZA-A-TU-MESA/?seguimiento=1&lat=${lat}&lng=${lng}`;
         if (!name || !address) {
             alert("Completa nombre y dirección");
             return;
