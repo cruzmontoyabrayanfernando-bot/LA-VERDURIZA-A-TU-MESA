@@ -543,44 +543,61 @@ updateTotal();
     }
     
 
-    function sendWhatsApp() {
-        const name = document.getElementById("name").value.trim();
-        const address = document.getElementById("address").value.trim();
-        const references = document.getElementById("references").value.trim();
-        const payment = document.getElementById("payment").value;
-        const cash = parseFloat(document.getElementById("cash").value) || 0;
-        const extra = document.getElementById("extra").value.trim();
-let lat = "";
-let lng = "";
+   function sendWhatsApp() {
+    const name = document.getElementById("name").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const references = document.getElementById("references").value.trim();
+    const payment = document.getElementById("payment").value;
+    const cash = parseFloat(document.getElementById("cash").value) || 0;
+    const extra = document.getElementById("extra").value.trim();
+    const schedule = document.getElementById("schedule").value;
 
-if (userCoords) {
-    [lat, lng] = userCoords.split(",");
-}
+    let lat = "";
+    let lng = "";
 
-// ⚠️ cambia por tu dominio real
-const link = `https://cruzmontoyabrayanfernando-bot.github.io/LA-VERDURIZA-A-TU-MESA/index.html?seguimiento=1&lat=${lat}&lng=${lng}`;
-
-
-        if (!name || !address) {
-            alert("Completa nombre y dirección");
-            return;
+    // ✅ Obtener coordenadas de forma segura
+    if (typeof userCoords !== "undefined" && userCoords) {
+        const coords = userCoords.split(",");
+        if (coords.length === 2) {
+            lat = coords[0];
+            lng = coords[1];
         }
+    }
 
-        let message = "🛒 *Pedido - La Verduriza* %0A%0A";
-        message += `👤 ${name}%0A`;
-        message += `📍 Dirección: ${address}%0A`;
+    // ✅ Link de seguimiento seguro (SIN index.html)
+    let link = "Ubicación no disponible";
 
-        if (userCoords) {
-            const mapsLink = `https://maps.google.com/?q=${userCoords}`;
-            message += `📍 Ubicación exacta: ${mapsLink}%0A`;
-        }
+    if (lat && lng) {
+        link = `https://cruzmontoyabrayanfernando-bot.github.io/LA-VERDURIZA-A-TU-MESA/?seguimiento=1&lat=${lat}&lng=${lng}`;
+    }
 
+    // ✅ Validación básica
+    if (!name || !address) {
+        alert("Completa nombre y dirección");
+        return;
+    }
+
+    let message = "🛒 *Pedido - La Verduriza* %0A%0A";
+    message += `👤 ${name}%0A`;
+    message += `📍 Dirección: ${address}%0A`;
+
+    // ✅ Link de Google Maps
+    if (lat && lng) {
+        const mapsLink = `https://maps.google.com/?q=${lat},${lng}`;
+        message += `📍 Ubicación exacta: ${mapsLink}%0A`;
+    }
+
+    if (references) {
         message += `📝 ${references}%0A`;
-        message += `💳 Pago: ${payment}%0A`;
+    }
 
-        if (payment === "Efectivo") {
-            message += `💵 Paga con: $${cash}%0A`;
+    message += `💳 Pago: ${payment}%0A`;
 
+    // ✅ Manejo de efectivo mejorado
+    if (payment === "Efectivo") {
+        message += `💵 Paga con: $${cash}%0A`;
+
+        if (typeof total !== "undefined") {
             if (cash >= total) {
                 const cambio = cash - total;
                 message += `🔄 Cambio: $${cambio}%0A`;
@@ -588,27 +605,44 @@ const link = `https://cruzmontoyabrayanfernando-bot.github.io/LA-VERDURIZA-A-TU-
                 message += `⚠️ Falta: $${(total - cash)}%0A`;
             }
         }
+    }
 
-        message += "%0A🧺 *Productos:* %0A";
+    message += "%0A🧺 *Productos:* %0A";
 
+    if (typeof cart !== "undefined" && cart.length > 0) {
         cart.forEach(item => {
             message += `• ${item.name} - ${item.qty} kg = $${item.subtotal}%0A`;
         });
-
-        if (extra) {
-            message += `%0A❓ También busco:%0A${extra}%0A`;
-        }
-const schedule = document.getElementById("schedule").value;
-message += `⏰ Entrega: ${schedule}%0A`;
-message += `🚚 Envío: $${envio}%0A`;
-message += `💵 Total final: $${totalFinal}`;
-message += `%0A🚚 Seguimiento en tiempo real:%0A${link}%0A`;
-
-        const phone = "5219613267670";
-       const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-localStorage.setItem("ultimoPedido", JSON.stringify(cart));
-        window.open(url, "_blank");
+    } else {
+        message += "Sin productos%0A";
     }
+
+    if (extra) {
+        message += `%0A❓ También busco:%0A${extra}%0A`;
+    }
+
+    // ✅ Totales protegidos
+    if (typeof envio !== "undefined") {
+        message += `🚚 Envío: $${envio}%0A`;
+    }
+
+    if (typeof totalFinal !== "undefined") {
+        message += `💵 Total final: $${totalFinal}%0A`;
+    }
+
+    message += `⏰ Entrega: ${schedule}%0A`;
+
+    // ✅ Seguimiento
+    message += `%0A🚚 Seguimiento en tiempo real:%0A${link}%0A`;
+
+    const phone = "5219613267670";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    // ✅ Guardar pedido
+    localStorage.setItem("ultimoPedido", JSON.stringify(cart || []));
+
+    window.open(url, "_blank");
+}
 
     function initMap() {
         map = L.map('map').setView([16.75, -93.12], 13); // Tuxtla aprox
