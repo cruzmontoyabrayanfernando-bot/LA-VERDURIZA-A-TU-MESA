@@ -695,10 +695,8 @@ function sendWhatsApp() {
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
 }
-
 // Estado inicial de los campos de pago
 togglePaymentFields();
-
 </script>
 </body>
 </html>
